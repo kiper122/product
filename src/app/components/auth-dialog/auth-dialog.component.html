@@ -1,0 +1,24 @@
+
+<form [formGroup]="authForm">
+    <div class="form-group">
+        <mat-form-field class="mat-form-field" appearance="outline">
+            <mat-label class="mat-label">Email</mat-label>
+            <input  matInput type="email" formControlName="email" color="primary">
+          </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field  class="mat-form-field" appearance='outline'color="primary">
+            <mat-label class="mat-label">Password</mat-label>
+            <input matInput type="password"   formControlName="password">
+          </mat-form-field>
+    </div>
+    <ng-container *ngIf="isLogin">
+        <button class="buttonSubmit" mat-raised-button color="warn" (click)="loginUser()" type="submit"  *ngIf="!authForm.invalid">Login</button>
+        <button mat-stroked-button disabled *ngIf="authForm.invalid" class="buttonSubmit">Login</button>
+    </ng-container>
+    <div class="textForm" ><span (click)="openRegistdialog()" mat-dialog-close > Зареєструватися
+
+    </span></div>
+</form>
+
+

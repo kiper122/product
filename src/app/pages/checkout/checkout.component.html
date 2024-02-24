@@ -1,0 +1,110 @@
+<div class="h">Ваше замовлення</div>
+<main [style.minHeight.px]="h-200">
+    <form [formGroup]="checkoutForm" *ngIf="isProduct" (ngSubmit)="submitCheckbox()">
+        <div class="box">
+            <div class="box__boxOne">
+                <div class="box__boxOne__deliveryText">Контактні дані</div>
+                <div class="box__boxOne__oneForm">
+                    <input type="text" placeholder="Ваше ім'я*" formControlName="name">
+                    <input type="text" placeholder="Номер телефона*" formControlName="phoneNumbers">
+                    <input type="text" placeholder="Місто*" formControlName="Citi">
+                    <input type="text" class="Vull" placeholder="Вулиця*" formControlName="Street">
+                    <input type="number" class="numberShtr" placeholder="№ будинку*" formControlName="numbersHome">
+                </div>
+                <div class="box__boxOne__threeForm">
+                    <textarea name="n" id="" placeholder="Коментар до замовленя*"></textarea>
+                </div>
+                <div class="box__boxOne__oneForm box__boxOne__twoOne">
+                    <input type="number" placeholder="Під'їзд" formControlName="Entrance">
+                    <input type="number" placeholder="Поверх" formControlName="Floot">
+                    <input type="number" placeholder="Кв/Офіс" formControlName="kv">
+                    <input type="number" placeholder="Домофон" formControlName="Entryphone">
+                </div>
+                <div class="box__boxOne__threeForm">
+                    <textarea name="n" id="" placeholder="Коментар до адреси*"></textarea>
+                </div>
+            </div>
+            <div class="box__boxThree">
+                <div class="textInfo">Оформити замовлення</div>
+                <div class="selectedDiscount">
+                    <label for="k">Оберіть акцію</label>
+                    <select name="" id="k">
+                        <option value="" selected disabled>Оберіть акцію</option>
+                        <option value="" *ngFor="let discount of discounts">{{discount.nameDiscount}}</option>
+
+                    </select>
+                </div>
+                <div class="promocod">
+                    <label for="j">Промо-код</label>
+                    <input type="text" placeholder="Введіть промо-код" id="j" maxlength="20">
+                    <button type="button" disabled>Застосувати</button>
+                </div>
+            </div>
+
+            <div class="box__boxTwo">
+                <table class="table" *ngIf="true">
+                    <thead>
+                        <tr>
+                            <th scope="col">Товар</th>
+                            <th scope="col">К-ть</th>
+                            <th scope="col">Ціна</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of basket">
+                            <th><img [src]="product.imagePath" style="margin-right: 20px;" height="60px" alt="">
+                                {{product.name | slice:0:10}} <span *ngIf="product.name.length>10">...</span></th>
+                            <td>
+                                <button class="buttonMinus" (click)="productCount(product,false)">-</button>
+                                <span>{{product.count}}</span>
+                                <button class="buttonPlus" (click)="productCount(product,true)">+</button>
+                            </td>
+                            <ng-container *ngIf="!product.discount ;else fd">
+                                <td>{{product.count * product.price}} ₴</td>
+                            </ng-container>
+                            <ng-template #fd>
+                                <td><s>{{product.count * (product.price)}}</s> <span>{{product.count * (product.price -
+                                        product.discount)}} ₴</span></td>
+                            </ng-template>
+
+
+                            <td><button (click)="deleteProduct(product.name)" class="buttonDelete">delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alles">Знижка : <span>{{totalDiscounts}}</span> грн</div>
+                <div class="alles">Доставка : <span>60</span> грн</div>
+                <div class="alles">Разом : <span>{{total + 60}}</span> грн</div>
+            </div>
+            <form class="box__boxPay">
+                <div class="textInfo">
+                    Спосіб оплати
+                </div>
+                <div class="oneCheck">
+                    <input type="radio" name="k" id="j">
+                    <label for="j">Готівкою</label>
+
+                </div>
+                <div class="oneCheck">
+                    <input type="radio" name="k" id="h" checked>
+                    <label for="h">Онлайн</label>
+                </div>
+            </form>
+            <div class="box__boxVier">
+                <div class="textInfo">Додаткова інформація</div>
+                <div class="ques">
+                    <input type="checkbox" id="check">
+                    <label for="check">Зателефонуйте мені для уточнення деталей</label>
+                </div>
+                <div class="alles">Pазом : {{total + 60}} грн</div>
+                <button type="submit">готово</button>
+            </div>
+        </div>
+    </form>
+    <div class="infoProduct" *ngIf="!isProduct">
+        <h1>Ваш кошик порожній 🍽️</h1>
+        <h3 [routerLink]="[ '/menu' ]">Меню</h3>
+    </div>
+</main>

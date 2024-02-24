@@ -1,0 +1,241 @@
+<div class="info-admin-panel" [style.width.px]="w-275">
+  <button [ngClass]="!productTableActiuve?'active':''" (click)="formActive()">Product Form</button>
+  <span>Product</span>
+  <button (click)="productInfoPanelClouse()" *ngIf="isProductInfoPanel">X</button>
+  <button (click)="tableActive()" [ngClass]="productTableActiuve?'active':''" *ngIf="!isProductInfoPanel"
+    [disabled]="isDisableTableButton">Product Table</button>
+</div>
+<main [style.height.px]="h">
+  <div class="box">
+    <ng-container *ngIf="!productTableActiuve ; else Table">
+      <form class="box__formWindow" [formGroup]="productForm" (submit)="addProduct()">
+        <div class="box__formWindow__inputs">
+          <div class="box__formWindow__inputs__oneBox">
+            <label *ngIf="isFirstFoto" class="box__formWindow__inputs__oneBox__labelImageInput" for="imageInput">
+              <span>Додати зображення</span>
+            </label>
+            <label class="disabled" *ngIf="disabledAddImgCategory">
+              <span>Додати зображення</span>
+            </label>
+
+            <input formControlName="imagePath" name="imagePath" type="file" id="imageInput" accept="image/*"
+              class="box__formWindow__inputs__oneBox__imageInput" (change)="upload($event)">
+            <div class="box__formWindow__inputs__oneBox__imageBox"
+              [style.border]="!isBorderFoto?'none':'1px solid black'" [style.backgroundImage]="'url(' +url +')'">
+              <p class="box__formWindow__inputs__oneBox__imageBox__text" *ngIf="isTextFoto">foto</p>
+            </div>
+            <div *ngIf="isProgressImg" class="progress" role="progressbar" aria-label="Animated striped example"
+              aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" [style.width.%]="uploadPercent">
+              </div>
+            </div>
+            <div class="box__formWindow__inputs__oneBox__fotoButtons" [style.display]="!isBorderFoto ?'flex':'none'">
+              <input type="button" value="info" (click)="clickInfoFoto()"
+                class="box__formWindow__inputs__oneBox__fotoButtons__button box__formWindow__inputs__oneBox__fotoButtons__buttonInfo">
+              <input type="button" value="delete" (click)="clickDeleteFoto()"
+                class="box__formWindow__inputs__oneBox__fotoButtons__button box__formWindow__inputs__oneBox__fotoButtons__buttonDelete">
+            </div>
+            <select class="box__formWindow__inputs__oneBox__select" formControlName="category">
+              <option value="none" disabled>Categories</option>
+              <option [ngValue]="category" *ngFor="let category of adminCategories">{{category.name}}</option>
+            </select>
+
+
+            <div class="box__formWindow__inputs__oneBox__PriceAndSizeInput">
+              <div>
+                <label for="price">Price : </label>
+                <input formControlName="price" name="price" id="price" type="number"
+                  class="box__formWindow__inputs__oneBox__PriceAndSizeInput__Price form-control" placeholder="0.0 $">
+              </div>
+              <div>
+                <label for="discount">Discount : </label>
+                <input formControlName="discount" name="discount" id="discount" type="number"
+                  class="box__formWindow__inputs__oneBox__PriceAndSizeInput__Price form-control" placeholder="0.0 $">
+              </div>
+              <div>
+                <label for="size">Size : </label>
+                <input id="size" formControlName="size" name="size" type="text"
+                  class="box__formWindow__inputs__oneBox__PriceAndSizeInput__Size form-control" placeholder="0.0 cm">
+              </div>
+            </div>
+            <input formControlName="weight" name="weigth" type="number"
+              class="box__formWindow__inputs__oneBox__Weigth form-control  border border-dark"
+              id="exampleFormControlInput1" placeholder="Weigth in g">
+
+          </div>
+          <div class="box__formWindow__inputs__twoBox">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">name</label>
+              <input formControlName="name" type="text" class="form-control  border border-dark"
+                id="exampleFormControlInput1" placeholder="name...">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">path</label>
+              <input type="text" formControlName="path" class="form-control  border border-dark"
+                id="exampleFormControlInput1" placeholder="path...">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+              <textarea formControlName="description"
+                class="box__formWindow__inputs__twoBox__textarea  form-control  border border-dark"
+                id="exampleFormControlTextarea1" placeholder="text..." rows="3"></textarea>
+            </div>
+
+
+            <div class="box__formWindow__inputs__twoBox__boxInput">
+              <input formControlName="proteins" name="proteins" type="number" placeholder="Білки..">
+              <input formControlName="fat" name="fat" type="number" placeholder="Жири..">
+            </div>
+            <div class="box__formWindow__inputs__twoBox__boxInput">
+              <input formControlName="carbohydrates" name="carbohydrates" type="text" placeholder="Вуглеводи..">
+              <input formControlName="calories" name="calories" type="number" placeholder="Калорійність..">
+            </div>
+
+          </div>
+        </div>
+        <button class="box__formWindow__inputs__oneBox__submitProduct" type="submit"
+          [disabled]="productForm.invalid">{{!editStatus?"Додати":"Змінити"}} продукт</button>
+
+      </form>
+    </ng-container>
+    <ng-template #Table>
+      <div class="box__table">
+        <table class="table" *ngIf="!isProductInfoPanel">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">category</th>
+              <th scope="col">name</th>
+              <th scope="col">path</th>
+              <th scope="col">description</th>
+              <th scope="col">imagePath</th>
+              <th scope="col"></th>
+              <th scope="col">detalisProduct</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of adminProduct">
+              <td>{{product.id}}</td>
+              <td>{{product.category.name}}</td>
+              <td>{{product.name}}</td>
+              <td>{{product.path}}</td>
+              <td>{{product.description | slice:0:10}} <span *ngIf="product.description.length>10">...</span> </td>
+              <td>
+                <img [src]="product.imagePath" alt="" height="50px">
+              </td>
+              <td>
+                <button class="actionButtons editDiscount" (click)="editProduct(product)">Edit</button>
+                <button class="actionButtons deleteDiscount" (click)="clickDeleteCategory(product)">Delete</button>
+              </td>
+              <td>
+                <button class="actionButtons detalisProduct" (click)="productDetalis(product)">detalis</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="box__table__info" *ngIf="isProductInfoPanel">
+          <div class="inf" [style.minHeight.px]="h-200">
+            <div class="cardProductInfo">
+              <div class="cardProductInfo__oneBox">
+                <div class="cardProductInfo__oneBox__img"
+                  [style.backgroundImage]="'url('+productDetalisElement.imagePath"></div>
+              </div>
+              <div class="cardProductInfo__twoBox">
+                <div class="cardProductInfo__twoBox__description">
+                  <h1>{{productDetalisElement.name}} ( {{productDetalisElement.path}} )</h1>
+                  <div>
+                    <p>{{productDetalisElement.description}}</p>
+                  </div>
+                </div>
+                <div class="cardProductInfo__twoBox__table">
+                  <table class="table"
+                    *ngIf="productDetalisElement.proteins || productDetalisElement.weight || productDetalisElement.size">
+                    <thead>
+                      <tr>
+                        <th scope="col">Білки</th>
+                        <th scope="col">Вуглеводи</th>
+                        <th scope="col">Жири</th>
+                        <th scope="col">Калорійність</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{{productDetalisElement.proteins}} g</td>
+                        <td>{{productDetalisElement.carbohydrates}} g</td>
+                        <td>{{productDetalisElement.fat}} g</td>
+                        <td>{{productDetalisElement.calories}} ккал</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h2 *ngIf="!!productDetalisElement.weight">вага : {{ productDetalisElement.weight}} g</h2>
+                  <h4 *ngIf="!!productDetalisElement.size">розмір : {{ productDetalisElement.size}} cm</h4>
+                  <h2>ціна : {{ productDetalisElement.price}} ₴</h2>
+                  <h2 *ngIf="productDetalisElement.discount">знижка : {{ productDetalisElement.discount}} ₴</h2>
+                  <h2 *ngIf="productDetalisElement.discount">поточна ціна : {{ productDetalisElement.price -
+                    productDetalisElement.discount}} ₴</h2>
+                </div>
+                <div class="cardProductInfo__twoBox__buttonsGroup"
+                  [style.marginTop.px]="!!productDetalisElement.size ? 20 : 0">
+                  <div class="cardProductInfo__twoBox__buttonsGroup__changes">
+                    <div class="cardProductInfo__twoBox__buttonsGroup__changes__count">
+
+                    </div>
+                    <div class="buttonsAction">
+                      <button class=" edit" (click)="editProduct(productDetalisElement)">edit</button>
+                      <button class=" delete" (click)="clickDeleteCategory(productDetalisElement)">delete</button>
+                    </div>
+                    <!-- <div class="cardProductInfo__twoBox__buttonsGroup__changes__alles">
+                                <div>Всього : <span>{{productDetalisElement.price * productDetalisElement.count}}</span> ₴</div>
+                            </div> -->
+                  </div>
+                  <div class="cardProductInfo__twoBox__buttonsGroup__submit">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </ng-template>
+
+
+  </div>
+</main>
+<div class="globalAllert" [style.width.px]="w" [style.height.px]="h" [style.display]="isGlobalAllert?'flex':'none'">
+  <div class="globalAllert__box">
+    <div class="globalAllert__box__imagInfo" [style.display]="isInfoImage?'flex':'none'">
+      <div class="globalAllert__box__imagInfo__img" [style.backgroundImage]="'url(' +url +')'"></div>
+      <input type="button" class="globalAllert__box__imagInfo__buttonBlock" value="close" (click)="closeGlobalAllert()">
+    </div>
+    <div class="globalAllert__box__deleteFotoDiscount" [style.display]="isDeleteImage?'block':'none'">
+      <div class="globalAllert__box__deleteFotoDiscount__containerr">
+        <h1>Ви дійсно видаляете цю картинку ?</h1>
+        <div class="globalAllert__box__deleteFotoDiscount__containerr__img" [style.backgroundImage]="'url(' +url +')'">
+        </div>
+        <div class="globalAllert__box__deleteFotoDiscount__containerr__buttonDelete">
+          <button class="globalAllert__box__deleteFotoDiscount__containerr__buttonDelete__delete"
+            (click)="deleteIIIMM()">Так</button>
+          <button class="globalAllert__box__deleteFotoDiscount__containerr__buttonDelete__continue"
+            (click)="closeGlobalAllert()">Ні</button>
+        </div>
+      </div>
+    </div>
+    <div class="globalAllert__box__deleteFotoDiscount" [style.display]="isdeleteProduct?'block':'none'">
+      <div class="globalAllert__box__deleteFotoDiscount__containerr">
+        <h1>Ви дійсно видаляете цей продукт</h1>
+        <div class="globalAllert__box__deleteFotoDiscount__containerr__imgDeleteDiscount"
+          [style.backgroundImage]="'url('+deleteImgUrl+')'"></div>
+        <div class="globalAllert__box__deleteFotoDiscount__containerr__buttonDelete">
+          <button class="globalAllert__box__deleteFotoDiscount__containerr__buttonDelete__delete"
+            (click)="deleteCategory()">Так</button>
+          <button class="globalAllert__box__deleteFotoDiscount__containerr__buttonDelete__continue"
+            (click)="closeGlobalAllert()">Ні</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

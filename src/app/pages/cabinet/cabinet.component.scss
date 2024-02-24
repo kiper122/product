@@ -1,0 +1,371 @@
+@import '../../shared/styles/mixins';
+.infoText{
+    @include size(100%,50px);
+    @include flexCenter();
+    color: white;
+    font-size: 30px;
+    background-color: black;
+    margin-top: 120px;
+}
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+main{
+    width: 100%;
+    margin-top: 20px;
+    @include flexCenter();
+    .box{
+        @include size(700px,550px);
+        margin-bottom: 50px;
+        box-shadow: 0px 0px 30px 3px rgba(213, 212, 212, 0.665);
+        border-radius: 30px;
+        &__panelNavigation{
+            @include size(100%,90px);
+            @include flex(space-around,center);
+            &>div{
+                @include flexCenter();
+                @include size(190px,50px);
+                border-radius: 10px;
+                font-size: 20px;
+                background-color: rgb(253, 207, 57);
+                border: 3px solid rgb(253, 207, 57);
+                &:hover{
+                    cursor: pointer;
+                    background-color: white;
+                    color: rgb(253, 207, 57);
+                    transition-duration: 0.3s;
+                    transition-property: color,background-color;
+                }
+               
+
+                
+            }
+            .active{
+                background-color: white;
+                    color: rgb(253, 207, 57);
+            }
+        }
+        &__valueUser{
+                @include size(90%,250px);
+            margin: 0 auto;
+            @include flex(space-between,center);
+            flex-direction: column;
+            &__elem{
+                text-align: center;
+                @include size(100%,50px);
+                @include flex(space-between,center);
+                &>h3{
+                    margin-left: 30px;
+                }
+                &>input{
+                    @include size(98%,100%);
+                    border-radius: 8px;
+                    border: 1px solid rgba(99, 98, 98, 0.809);
+                    margin: 0 auto;
+                font-size: 20px;
+                padding: 10px;
+                }
+            }
+            &__elem2{
+                &>input{
+                    @include size(48%,100%);
+                }
+            }
+        }
+        &__changePassword{
+            @include size(90%,400px);
+            margin: 20px auto 0 auto;
+
+            &__elem4{
+                margin-top: 25px;
+                display: block;
+                .submit{
+                    background-color: rgb(252, 202, 54);
+                    border: 1px solid rgb(252, 202, 54);
+                    font-size: 20px;
+                    @include size(50%,40px);
+                    color: black;
+                    border-radius: 7px;
+                    display: block;
+                    text-align: center;
+                    &:disabled{
+                        background-color: rgb(204, 202, 202);
+                        border: 1px solid rgb(204, 202, 202);
+                    }
+                }
+            }
+        }
+        &__adress{
+            @include size(100%,100px);
+            &__textInfo{
+                margin-top: 10px;
+                @include size(100%,40px);
+                font-size: 28px;
+                padding-left: 50px;
+            }
+            &__boxButton{
+                @include size(100%,60px);
+                @include flex(space-around,center);
+                &>button,div{
+                    @include size(190px,55px);
+                    border-radius: 10px;
+                    font-size: 20px;
+                    background-color: rgb(253, 207, 57);
+                    border: 3px solid rgb(253, 207, 57);
+                    @include flexCenter();
+                    
+                    margin-top: 30px;
+                    &:hover{
+                        background-color: white;
+                        color: rgb(253, 207, 57);
+                        transition-duration: 0.3s;
+                        transition-property: color,background-color;
+                        cursor: pointer;
+                    }
+                }
+                .adress{
+                    background-color: white;
+                    color: rgb(253, 207, 57);
+                    &:hover{
+                        background-color:rgb(253, 207, 57); 
+                        color: black;
+                    }
+                }
+            }
+        }
+        &__exit{
+            @include size(100%,90px);
+            @include flex(flex-start,center);
+            &>input{
+                @include size(190px,50px);
+                margin: 20px 0 0 80px;
+                border-radius: 10px;
+                background-color: red;
+                color: rgb(0, 0, 0);
+                font-size: 25px;
+                @include size(190px,55px);
+                border-radius: 10px;
+                font-size: 20px;
+                background-color: rgb(253, 207, 57);
+                border: 3px solid rgb(253, 207, 57);
+                
+                margin-top: 30px;
+                &:hover{
+                    background-color: white;
+                    color: rgb(253, 207, 57);
+                    transition-duration: 0.3s;
+                    transition-property: color,background-color;
+                }
+
+            }
+        }
+    }
+
+}
+.boxTable{
+    width: 90%;
+    height: 430px;
+    overflow: auto;
+    margin: 0 auto;
+}
+.noProduct{
+    @include size(80%,100px);
+    @include flex(space-around,center);
+    flex-direction: column;
+    margin: 30px auto;
+    span{
+        color: rgb(255, 204, 0);
+        font-size: 30px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+@media screen and (max-width:500px){
+    .infoText{
+        @include size(100%,40px);
+        @include flexCenter();
+        color: white;
+        font-size: 20px;
+        background-color: black;
+        margin-top: 80px;
+    }
+    *{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    main{
+        width: 100%;
+        margin-top: 20px;
+        @include flexCenter();
+        .box{
+            @include size(90%,520px);
+            margin-bottom: 50px;
+            box-shadow: 0px 0px 30px 3px rgba(213, 212, 212, 0.665);
+            border-radius: 30px;
+            margin-top: 10px;
+            &__panelNavigation{
+                @include size(100%,115px);
+                margin-top: 10px;
+                @include flex(space-around,center);
+                flex-wrap: wrap;
+                &>div{
+                    @include flexCenter();
+                    @include size(40%,40px);
+                    border-radius: 10px;
+                    font-size: 16px;
+                    background-color: rgb(253, 207, 57);
+                    border: 3px solid rgb(253, 207, 57);
+                    &:hover{
+                        cursor: pointer;
+                        background-color: white;
+                        color: rgb(253, 207, 57);
+                        transition-duration: 0.3s;
+                        transition-property: color,background-color;
+                    }
+                   
+    
+                    
+                }
+                .active{
+                    background-color: white;
+                        color: rgb(253, 207, 57);
+                }
+            }
+            &__valueUser{
+                    @include size(90%,200px);
+                margin: 0 auto;
+                @include flex(space-between,center);
+                flex-direction: column;
+                &__elem{
+                    text-align: center;
+                    @include size(95%,35px);
+                    @include flex(space-between,center);
+                    &>h3{
+                        margin: 0 auto;
+                    }
+                    &>input{
+                        @include size(98%,35px);
+                        border-radius: 8px;
+                        border: 1px solid rgba(99, 98, 98, 0.809);
+                        margin: 0 auto;
+                    font-size: 17px;
+                    padding: 10px;
+                    }
+                }
+                &__elem2{
+                    &>input{
+                        @include size(48%,100%);
+                    }
+                }
+            }
+            &__changePassword{
+                @include size(90%,400px);
+                margin: 10px auto 0 auto;
+    
+                &__elem4{
+                    margin-top: 25px;
+                    display: block;
+                    .submit{
+                        background-color: rgb(252, 202, 54);
+                        border: 1px solid rgb(252, 202, 54);
+                        font-size: 20px;
+                        @include size(99%,40px);
+                        color: black;
+                        border-radius: 7px;
+                        display: block;
+                        text-align: center;
+                        &:disabled{
+                            background-color: rgb(204, 202, 202);
+                            border: 1px solid rgb(204, 202, 202);
+                        }
+                    }
+                }
+            }
+            &__adress{
+                @include size(100%,100px);
+                &__textInfo{
+                    margin-top: 10px;
+                    @include size(100%,40px);
+                    font-size: 20px;
+                    padding-left: 30px;
+                }
+                &__boxButton{
+                    @include size(100%,60px);
+                    @include flex(space-around,center);
+                    &>button,div{
+                        @include size(42%,40px);
+                        border-radius: 10px;
+                        font-size: 16px;
+                        background-color: rgb(253, 207, 57);
+                        border: 3px solid rgb(253, 207, 57);
+                        @include flexCenter();
+                        
+                        margin-top: 10px;
+                        &:hover{
+                            background-color: white;
+                            color: rgb(253, 207, 57);
+                            transition-duration: 0.3s;
+                            transition-property: color,background-color;
+                            cursor: pointer;
+                        }
+                    }
+                    .adress{
+                        background-color: white;
+                        color: rgb(253, 207, 57);
+                        &:hover{
+                            background-color:rgb(253, 207, 57); 
+                            color: black;
+                        }
+                    }
+                }
+            }
+            &__exit{
+                @include size(100%,55px);
+                @include flex(flex-start,center);
+                &>input{
+                    margin: 20px 0 0 80px;
+                    border-radius: 10px;
+                    color: rgb(0, 0, 0);
+                    font-size: 20px;
+                    @include size(50%,40px);
+                    border-radius: 10px;
+                    font-size: 20px;
+                    background-color: rgb(253, 207, 57);
+                    border: 3px solid rgb(253, 207, 57);
+                    
+                    &:hover{
+                        background-color: white;
+                        color: rgb(253, 207, 57);
+                        transition-duration: 0.3s;
+                        transition-property: color,background-color;
+                    }
+    
+                }
+            }
+        }
+    
+    }
+    .boxTable{
+        width: 95%;
+        height: 370px;
+        overflow: auto;
+        margin: 0 auto;
+        .none{
+            color: red;
+            display: none;
+        }
+    }
+    .noProduct{
+        @include size(80%,100px);
+        @include flex(space-around,center);
+        flex-direction: column;
+        margin: 30px auto;
+        span{
+            color: rgb(255, 204, 0);
+            font-size: 30px;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}

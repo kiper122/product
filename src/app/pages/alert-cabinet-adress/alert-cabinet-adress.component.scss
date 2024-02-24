@@ -1,0 +1,52 @@
+@import '../../shared/styles/mixins';
+.clouse{
+    position: absolute;
+    top: 25px;
+    right: 20px;
+}
+.textAdress{
+    @include size(100%,60px);
+    @include flexCenter();
+    font-size: 30px;
+    margin-top: 20px;
+}
+.boxForm{
+    @include size(80%,200px);
+    margin: 20px auto 0 auto;
+    &__oneForm{
+        @include size(100%,50px);
+        @include flexCenter();
+        &>input{
+            @include size(98%,40px);
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 10px;
+            border: 1px solid rgb(61, 60, 60);
+
+        }
+        &>button{
+            @include size(100%,50px);
+            margin-top: 30px;
+            background-color: rgb(255, 229, 35);
+            font-size: 22px;
+            border: 1px solid rgb(255, 229, 35);
+            border-radius: 10px;
+            &:disabled{
+                background-color: rgb(191, 191, 191);
+                 border: 1px solid rgb(191, 191, 191);
+            }
+        }
+    }
+    &__twoForm{
+        @include size(100%,70px);
+        @include flex(space-around,center);
+        &>input{
+            display: block;
+            @include size(45%,45px);
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 1px solid rgb(61, 60, 60);
+        }
+    }
+}

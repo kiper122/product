@@ -1,0 +1,43 @@
+
+@import '../../shared/styles/mixins';
+@import '../../shared/styles/base';
+.lentInfo{
+    @extend %lentaInfo;
+}
+main{
+    width: 100%;
+    padding-top: 40px;
+    @include flexCenter();
+    .text{
+        @include size(90%,none);
+        min-height: 600px;
+        @include flex(space-around,center);
+        flex-direction: column;
+        &>div{
+            @include size(80%,24%);
+            font-size: 20px;
+            margin: 20px;
+            text-align: start;
+
+        }
+    }
+}
+@media screen and (max-width:500px){
+    main{
+        width: 100%;
+        padding-top: 40px;
+        @include flexCenter();
+        .text{
+            @include size(90%,none);
+            min-height: 600px;
+            @include flex(space-around,center);
+            flex-direction: column;
+            &>div{
+                @include size(100%,9%);
+                font-size: 18px;
+                margin: 15px;
+                text-align: start;
+            }
+        }
+    }
+}

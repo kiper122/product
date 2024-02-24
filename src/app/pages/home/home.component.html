@@ -1,0 +1,11 @@
+<div class="lentInfo">Меню</div>
+<section class="menu-product" [style.minHeight.px]="h-200" >
+        <div *ngFor="let category of categories" >
+                <a [routerLink]="['/menu/product/',category.path]" routerLinkActive="activen" class="menu-product__element" [class]="category.dopCategory?'none':''">
+                    <div class="menu-product__element__img" [style.backgroundImage]="'url('+category.imagePath+')'"></div>
+                    <div class="menu-product__element__text">
+                        <h1>{{category.name}}</h1>
+                    </div>
+                </a>
+            </div>
+</section>

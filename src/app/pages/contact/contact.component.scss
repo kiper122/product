@@ -1,0 +1,29 @@
+@import '../../shared/styles/base';
+@import '../../shared/styles/mixins';
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+.lentInfo{
+    @extend %lentaInfo;
+}
+main{
+    @include flex(space-around,flex-start);
+    @include size(100%,70vh);
+    .contactBox{
+      @include size(90%,200px);
+      @include flexCenter();
+      flex-direction:column;
+      &>div{
+        @include size(90%,50px);
+        margin-top: 20px;
+        @include flex(space-around,center);
+        &>div{
+          font-size: 20px;
+        }
+      }
+    }
+}
+  

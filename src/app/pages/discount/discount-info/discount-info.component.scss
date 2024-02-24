@@ -1,0 +1,51 @@
+@import '../../../shared/styles/mixins';
+.box{
+    width: 90%;
+    min-height: 600px;
+    margin: auto;
+    margin-top: 130px;
+    .img{
+        @include size(100%,700px);
+        margin: 50px auto;
+        @include backgroundImg(1300px);
+    }
+    h1{
+        display: block;
+        text-align: center;
+        margin-bottom: 50px;
+        font-weight: 800;
+    }
+    .text{
+        @include size(100%,230px);
+        text-align: center;
+        font-size: 30px;
+    }
+}
+@media screen and (max-width:500px){
+    .box{
+        width: 90%;
+        min-height: 300px;
+        margin: auto;
+        margin-top: -50px;
+        .img{
+            @include size(100%,300px);
+            margin: 20px auto;
+            @include backgroundImg(400px);
+        margin-bottom: -30px;
+        }
+        h1{
+            display: block;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 800;
+        }
+        .text{
+            @include size(100%,none);
+            min-height:200px;
+            display: block;
+            text-align: start;
+            font-size: 22px;
+            margin-bottom: 200px;
+        }
+    }
+}

@@ -1,0 +1,96 @@
+@import '../../shared/styles/mixins';
+@import '../../shared/styles/base';
+.lentInfo{
+    @extend %lentaInfo;
+}
+main{
+    width: 100%;
+    .box{
+        @include size(900px,700px);
+        margin: 50px auto;
+        @include flex(space-around,flex-start);
+        flex-wrap: wrap;
+        &__paymentElement{
+            @include size(400px,300px);
+            margin: 10px 20px 20px 0px;
+            @include flexCenter();
+            &__element{
+                @include size(350px,250px);
+                border: 3px solid rgb(255, 208, 0);
+                @include flexCenter();
+               
+                &__somePayment{
+                    @include size(90%,110%);
+                    margin-bottom: 50px;
+                    @include flex(space-around,center);
+                    flex-direction: column;
+                    &__img{
+                       @include size(130px,70px);
+                       background-color: rgb(255, 255, 255);
+                       @include flexCenter();
+                    }
+                    &__name{
+                        @include size(100%,60px);
+                        font-size: 25px;
+                        text-align: center;
+                        @include flexCenter();
+                        font-weight: 800;
+                    }
+                    &__description{
+                        @include size(100%,100px);
+                        font-size: 20px;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:500px){
+    main{
+        width: 100%;
+        min-height: 600px;
+        .box{
+            @include size(100%,none);
+            min-height: 810px;
+            margin: 50px auto;
+            @include flex(space-around,flex-start);
+            flex-wrap: wrap;
+            &__paymentElement{
+                @include size(400px,150px);
+                margin: 10px auto 60px auto;
+                @include flexCenter();
+                &__element{
+                    @include size(300px,158px);
+                    border: 3px solid rgb(255, 208, 0);
+                    @include flexCenter();
+                   
+                    &__somePayment{
+                        @include size(90%,69%);
+                        margin-bottom: 50px;
+                        @include flex(space-around,center);
+                        flex-direction: column;
+                        &__img{
+                           @include size(130px,70px);
+                           margin-bottom: 20px;
+                           background-color: rgb(255, 255, 255);
+                           @include flexCenter();
+                        }
+                        &__name{
+                            @include size(100%,60px);
+                            font-size: 22px;
+                            text-align: center;
+                            @include flexCenter();
+                            font-weight: 800;
+                        }
+                        &__description{
+                            @include size(100%,100px);
+                            font-size: 15px;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

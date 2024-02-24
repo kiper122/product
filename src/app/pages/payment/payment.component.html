@@ -1,0 +1,16 @@
+<div class="lentInfo">Спосіб оплати</div>
+<main [style.minHeight.px]="h-200">
+    <div class="box">
+        <div class="box__paymentElement" *ngFor="let payment of payments">
+            <div class="box__paymentElement__element">
+                <div class="box__paymentElement__element__somePayment">
+                    <div class="box__paymentElement__element__somePayment__img">
+                        <img [src]="payment.imagePath" alt="" height="80px">
+                    </div>
+                    <div class="box__paymentElement__element__somePayment__name">{{payment.nameIPayment}}</div>
+                    <div class="box__paymentElement__element__somePayment__description">{{payment.description}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

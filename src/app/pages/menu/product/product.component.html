@@ -1,0 +1,87 @@
+
+<div #slider class="sliderr"
+(mousedown)="onMouseDown($event)"
+(mouseleave)="onMouseLeave()"
+(mouseup)="onMouseUp()"
+(mousemove)="onMouseMove($event)"
+(touchstart)="onTouchStart($event)"
+(touchend)="onTouchEnd()"
+(touchmove)="onTouchMove($event)">
+    <img *ngFor="let item of discounts; let i = index" [src]="item.imagePath" alt="">
+</div>
+<div class="positionDiscount">
+    <div class="positionDiscount__block">
+        <div *ngFor="let item of discounts;let i = index"  [class]="(numberDiscounts == i) ? 'active' :''" (click)="scrollToImage(i)"></div>
+    </div>
+</div>
+<main [style.minHeight.px]="h-200">
+    <a class="cardProduct c" *ngFor="let product of products">
+        <div  class="cardProduct__img " [style.backgroundImage]="'url('+product.imagePath+')'"
+            [routerLink]="['/menu/product',product.category.path,product.id]"></div>
+        <div class="cardProduct__description" [routerLink]="['/menu/product/',product.category.path,product.id]">
+            <h2>{{product.name}}</h2>
+            <div>
+                <p>{{product.description |slice:0:120}} <span *ngIf="product.description.length>125">...</span></p>
+            </div>
+        </div>
+        <div class="cardProduct__buttons">
+            <div class="cardProduct__buttons__oneBox">
+                <ng-container *ngIf="!product.discount ;else priseDiscount">
+                    <div class="cardProduct__buttons__oneBox__price">{{product.price * product.count}} ₴</div>
+                </ng-container>
+                <ng-template #priseDiscount>
+                    <div class="cardProduct__buttons__oneBox__price discount"><s>{{product.price * product.count}}</s> ₴
+                    </div>
+                    <div class="cardProduct__buttons__oneBox__priceDiscount">{{(product.price - product.discount) *
+                        product.count}} ₴ </div>
+                </ng-template>
+                <div class="cardProduct__buttons__oneBox__countsGroup">
+                    <button (click)="productCount(product,false)" class="minus">-</button>
+                    <input type="text" [value]="product.count" readonly>
+                    <button (click)="productCount(product,true)">+</button>
+                </div>
+            </div>
+            <button type="button" (click)="addToBasket(product)">Додати у кошик</button>
+        </div>
+    </a>
+
+
+    <a class="cardProduct m" *ngFor="let product of products">
+        <div class="cardProduct__img " [style.backgroundImage]="'url('+product.imagePath+')'"
+            [routerLink]="['/menu/product/',product.category.path,product.id]">
+        </div>
+        <div class="dopInfo">
+            <div class="oneText" *ngIf="product.weight"><span>{{product.weight }}</span> g</div>
+            <div class="twoText" *ngIf="product.size"><span>{{product.size}}</span> cм</div>
+        </div>
+        <div class="twoBox">
+            <div class="cardProduct__description" [routerLink]="['/menu/product/',product.category.path,product.id]">
+                <h4>{{product.name}}</h4>
+                <div>
+                    <p>{{product.description |slice:0:120}} <span *ngIf="product.description.length>120">...</span></p>
+                </div>
+            </div>
+            <div class="cardProduct__buttons">
+                <div class="cardProduct__buttons__oneBox">
+                    <ng-container *ngIf="!product.discount ;else priseDiscount">
+                        <div class="cardProduct__buttons__oneBox__price">{{product.price * product.count}} ₴</div>
+                    </ng-container>
+                    <ng-template #priseDiscount>
+                        <div class="cardProduct__buttons__oneBox__price discount"><s>{{product.price * product.count}}</s> ₴
+                        </div>
+                        <div class="cardProduct__buttons__oneBox__priceDiscount">{{(product.price - product.discount) *
+                            product.count}} ₴ </div>
+                    </ng-template>
+                    <div class="cardProduct__buttons__oneBox__countsGroup">
+                        <button (click)="productCount(product,false)" class="minus">-</button>
+                        <input type="text" [value]="product.count" readonly>
+                        <button (click)="productCount(product,true)">+</button>
+                    </div>
+                </div>
+                <button type="button" (click)="addToBasket(product)">Додати у кошик</button>
+        </div>
+        </div>
+    </a>
+
+
+</main>

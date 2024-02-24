@@ -1,0 +1,348 @@
+@import '../../shared/styles/mixins';
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.globalBox{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(122, 114, 114, 0.251);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+}
+.h{
+    @include size(100%,40px);
+    background-color: rgb(255, 212, 41);
+    color: black;
+
+    @include flexCenter();
+    margin-top: 80px;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+main{
+    @include size(100%,none);
+    @include flexCenter();
+    .box{
+        @include size(100%,none);
+        min-height: 400px;
+        margin: 10px auto;
+        @include flex(space-between,center);
+        flex-direction: column;
+        &__boxOne{
+            order: 4;
+            margin-bottom: 40px;
+
+            @include size(95%,745px);
+            &__deliveryText{
+                @include size(100%,30px);
+                margin: 0 auto;
+                background-color: rgb(255, 212, 41);
+                color: black;
+                font-size: 20px;
+                @include flexCenter();
+                
+            }
+            &__deliveryValue{
+                @include size(90%,60px);
+                margin: 0 auto;
+                font-size: 22px;
+                @include flex(space-around,center);
+                .custom-checked .form-check-input:checked {
+                    background-color: black; /* Желаемый цвет фона для выбранного чекбокса */
+                    border: 3px solid black; /* Желаемый цвет границы для выбранного чекбокса */
+                    color: white;            /* Желаемый цвет текста для выбранного чекбокса */
+                  }
+
+            }
+            &__oneForm{
+                @include size(90%,270px);
+                @include flex(space-around,center);
+                flex-direction: column;
+                margin: 0 auto;
+                &>input{
+                    @include size(100%,40px);
+                    border: 1px solid rgb(90, 90, 90);
+                    margin-top: 10px;
+                    padding: 10px;
+                    font-size: 20px;
+                    &:focus{
+                        border: 1px solid red;
+                    }
+                }
+            }
+            &__twoOne{
+                height: 220px;
+            }
+            &__twoForm{
+                @include size(90%,50px);
+                margin: 0 auto;
+                @include flex(space-between,center);
+                &>input{
+                    font-size: 22px;
+                    padding: 10px;
+                    margin-top: 10px;
+                }
+                .numberShtr{
+                    @include size(60px,40px);
+                    font-size: 18px;
+                }
+                .Vull{
+                    @include size(200px,40px);
+                }
+            }
+            &__threeForm{
+                @include size(90%,100px);
+                margin: 0 auto;
+                @include flexCenter();
+                &>textarea{
+                    resize: none;
+                    @include size(100%,90px);
+                    margin-top: 10px;
+                    font-size: 20px;
+                    padding: 10px;
+                }
+            }
+            &__viForm{
+                @include size(90%,50px);
+                @include flex(space-between,center);
+                margin: 0 auto;
+                &>input{
+                    @include size(50px,40px);
+                    margin-top: 10px;
+                    font-size: 15px;
+                    padding: 10px;
+                }
+            }
+        }
+        &__boxVier{
+            @include size(100%,175px);
+            order: 12;
+            @include flex(space-between,center);
+            flex-direction: column;
+            margin-top: 14px;
+            margin-bottom: 20px;
+            .textInfo{
+                @include size(100%,30px);
+                font-size: 20px;
+                @include flexCenter();
+                background-color: rgb(255, 212, 41);
+            }
+            .ques{
+                margin-top: 10px;
+                &>input{
+                    @include size(18px,18px);
+                }
+                &>label{
+                    font-size: 17px;
+                    margin-left: 10px;
+                    margin-bottom: 3px;
+                }
+            }
+            .alles{
+                @include size(100%,40px);
+                font-size: 20px;
+                @include flexCenter();
+            }
+            &>button{
+                @include size(40%,35px); 
+                background-color: rgb(255, 212, 41);
+                border: 2px solid rgb(255, 212, 41);
+                color: black;
+                border-radius: 10px;
+                font-size: 20px;
+                @include flexCenter();
+                &:disabled{
+                    background-color: rgb(216, 216, 216);
+                    border: 2px solid rgb(216, 216, 216);
+                }
+            }
+        }
+        &__boxThree{
+            @include size(95%,190px);
+            margin-top: -20px;
+            position: relative;
+            margin-bottom: 20px;
+            @include flex(space-between,center);
+            flex-direction: column;
+            order: 1;
+            .textInfo{
+                @include size(100%,30px);
+                font-size: 20px;
+                background-color: rgb(255, 212, 41);
+                @include flexCenter();
+            }
+            .selectedDiscount{
+               
+                position: relative;
+                @include size(100%,50px);
+                @include flexCenter();
+                &>select{
+                    @include size(95%,75%);
+                    border: 1px solid rgb(156, 155, 155);
+                    border-radius: 5px;
+                }
+                &>label{
+                    position: absolute;
+                    top: -25px;
+                    left: 10px;
+                    font-size: 18px;
+                }
+            }
+            .promocod{
+                position: relative;
+                
+                &>label{
+                    position: absolute;
+                    top: -25px;
+                    left: 10px;
+                    font-size: 18px;
+                }
+                @include size(100%,50px);
+                @include flex(space-around,center);
+                &>input{
+                    @include size(64%,75%);
+                    padding: 10px;
+                    font-size: 18px;
+                    border-radius: 5px;
+                    border: 1px solid rgb(156, 155, 155);
+                }
+                &>button{
+                background-color: rgb(255, 212, 41);
+                @include size(30%,70%);
+                border: 1px solid rgb(255, 212, 41); 
+                font-size: 15px;
+                border-radius: 10px;
+            
+                }
+            }
+        }
+        &__boxPay{
+            @include size(100%,110px);
+            order: 10;
+            margin-top: -50px;
+            @include flex(space-between,center);
+            flex-direction: column;
+            .textInfo{
+                @include size(100%,30px);
+                font-size: 20px;
+                color: black;
+                background-color: rgb(255, 212, 41);
+                @include flexCenter();
+            }
+            .oneCheck{
+                margin-left: 30px;
+                @include size(90%,40px);
+                @include flex(flex-start,center);
+                &>input{
+                    @include size(15px,15px);
+                    margin-right: 10px;
+                }
+                &>label{
+                    font-size: 17px;
+                }
+            }
+            
+        }
+        &__boxTwo{
+            @include size(100%,none);
+            min-height: 100px;
+            margin-bottom: 40px;
+            font-size: 17px;
+            &>button{
+                background-color: red;
+            }
+            th{
+                width: 100px;
+                font-weight: 500;
+            }
+            td{
+                width: 10px;
+                padding-top: 20px;
+                text-align: center;
+                &>span{
+                    margin: 0 20px;
+                    margin-top: 35px;
+                    font-size: 16px;
+                };
+            }
+            .buttonPlus,.buttonMinus{
+                @include size(0,10px);
+                border: none;
+                background-color: white;
+                font-size: 18px;
+            }
+            .buttonDelete{
+                background-color: red;
+                border: 2px solid red;
+                @include size(60px,35px);
+                border-radius: 7px;
+                color: white;
+                &:hover{
+                    background-color: white;
+                    border: 2px solid red;
+                    color: red;
+                    transition-duration: 0.3s;
+                    transition-property: border,color,background-color;
+                }
+            }
+            s{
+                font-size: 0px;
+                margin: 0 -13px 0 0;
+            }
+            span{
+                color: red;
+            }
+            .alles{
+                font-size: 20px;
+                @include size(100%,30px);
+                @include flex(flex-end,center);
+                padding-right: 30px;
+                font-weight: 500;
+                &>span{
+                    margin: 0 10px;
+                    font-weight: 400;
+                }
+            }
+            .submit{
+                font-size: 25px;
+                @include size(100%,50px);
+                @include flex(center,center);
+                margin-top: 10px;
+                &>button{
+                    @include size(100%,45px);
+                    border-radius: 10px;
+                    background-color: black;
+                    color: white;
+                    margin: 0 auto;
+                    &:hover{
+                        @include hoverButton();
+                    }
+                    &:disabled{
+                        background-color: rgb(170, 170, 170);
+                        &:hover{
+                            color: white;
+                            cursor: auto;
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    .infoProduct{
+        @include size(600px,200px);
+        text-align: center;
+        &>h3{
+            margin-top: 30px;
+                display: block;
+            &:hover{
+                
+                color: rgb(154, 13, 13);
+                cursor: pointer;
+                
+            }
+        }
+    }
+}

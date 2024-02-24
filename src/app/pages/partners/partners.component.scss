@@ -1,0 +1,106 @@
+
+@import '../../shared/styles/mixins';
+@import '../../shared/styles/base';
+.lentInfo{
+    @extend %lentaInfo;
+}
+main{
+    width: 100%;
+    padding-top: 40px;
+    @include flex(space-around,center);
+    flex-direction: column;
+    .text{
+        @include size(90%,none);
+        min-height: 600px;
+        @include flex(space-around,center);
+        flex-direction: column;
+        margin: 10px 0;
+        &>div{
+            @include size(80%,24%);
+            font-size: 20px;
+            margin: 20px;
+            text-align: start;
+        }
+    }
+    .inputBox{
+        @include size(90%,500px);
+        margin: 30px 0;
+        @include flex(space-around,center);
+        flex-direction: column;
+        &__block{
+            @include size(500px,90%);
+            background-color: rgb(255, 255, 255);
+            @include flex(space-around,center);
+        flex-direction: column;
+        &>input{
+            @include size(100%,50px);
+            font-size: 20px;
+            padding: 15px;
+        }
+        &>textArea{
+            resize: none;
+            @include size(100%,150px);
+            padding: 15px;
+            font-size: 20px;
+        }
+        &>button{
+            @include size(200px,50px);
+            border-radius: 10px;
+            background-color: rgb(255, 230, 0);
+            font-size: 25px;
+            border: 1px solid rgb(255, 230, 0);
+        }
+        }
+    }
+}
+@media screen and (max-width:500px){
+    main{
+        width: 100%;
+        padding-top: 0px;
+        @include flex(space-around,center);
+        flex-direction: column;
+        .text{
+            @include size(90%,none);
+            min-height: 600px;
+            @include flex(space-around,center);
+            flex-direction: column;
+            margin: 10px 0;
+            &>div{
+                @include size(96%,24%);
+                font-size: 20px;
+                margin: 14px;
+                text-align: start;
+            }
+        }
+        .inputBox{
+            @include size(90%,500px);
+            margin: -18px 0;
+            @include flex(space-around,center);
+            flex-direction: column;
+            &__block{
+                @include size(90%,90%);
+                background-color: rgb(255, 255, 255);
+                @include flex(space-around,center);
+            flex-direction: column;
+            &>input{
+                @include size(100%,50px);
+                font-size: 20px;
+                padding: 15px;
+            }
+            &>textArea{
+                resize: none;
+                @include size(100%,150px);
+                padding: 15px;
+                font-size: 20px;
+            }
+            &>button{
+                @include size(200px,50px);
+                border-radius: 10px;
+                background-color: rgb(255, 230, 0);
+                font-size: 25px;
+                border: 1px solid rgb(255, 230, 0);
+            }
+            }
+        }
+    }
+}

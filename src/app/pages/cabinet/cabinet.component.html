@@ -1,0 +1,95 @@
+<div class="infoText">Особистий кабінет</div>
+<main [style.minHeight.px]="h-180">
+    <form class="box" [formGroup]="cabinetForm" (ngSubmit)="saveNewValueUser()">
+        <div class="box__panelNavigation">
+            <div [ngClass]=" isValueUser?'active':''" (click)="valueUser()">Особисті дані</div>
+            <div [ngClass]=" isHistoryOrdrers?'active':''" (click)="historyOrdrers()">Історія замовлень</div>
+            <div [ngClass]=" isChangePassword?'active':''" (click)="changePassword()">Зміна паролю</div>
+        </div>
+        <ng-container *ngIf="isValueUser">
+            <div class="box__valueUser">
+                <div class="box__valueUser__elem1 box__valueUser__elem">
+                    <h3>Особисті дані</h3>
+                </div>
+                <div class="box__valueUser__elem2 box__valueUser__elem">
+                    <input type="text" placeholder="*ваше ім'я" formControlName="firstName">
+                    <input type="text" placeholder="*ваше прізвище" formControlName="lastName">
+                </div>
+                <div class="box__valueUser__elem3 box__valueUser__elem">
+                    <input type="text" placeholder="+38(xxx) xxx xx xx" formControlName="phoneNumber">
+    
+                </div>
+                <div class="box__valueUser__elem4 box__valueUser__elem">
+                    <input type="text" placeholder="*ваш емейл" formControlName="email" readonly>
+                </div>
+            </div>
+            <div class="box__adress">
+                <div class="box__adress__textInfo">Адресс</div>
+                <div class="box__adress__boxButton">
+                    <div class="adress" (click)="openDialogAdress()">Додати адресу</div>
+                    <button [disabled]="cabinetForm.invalid" type="submit">Зберегти зміни</button>
+                </div>
+            </div>
+            <div class="box__exit">
+                <input type="button" (click)="openDialogExit('0ms', '0ms')" value="Вийти">
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isHistoryOrdrers">
+            <div class="boxTable">
+                <ng-container *ngIf="productsUser.length>0 ;else noProducts">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col"></th>
+                            <th scope="col">наіменуваня</th>
+                            <th scope="col">кількість</th>
+                            <th scope="col" class="none">знижка</th>
+                            <th scope="col" class="none">ціна</th>
+                            <th scope="col">всього</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let product of productsUser">
+                            <td><img [src]="product.imagePath"  width="70px"></td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.count}}</td>
+                            <td class="none">{{product.discount? product.discount:0}}</td>
+                            <td class="none">{{product.price}}</td>
+                            <td>{{(product.count* (product.discount ?  (product.price - product.discount) : product.price))}} ₴</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </ng-container>
+                <ng-template #noProducts>
+                    <div class="noProduct">
+                        <h2>Ви ще нічого не замовляли 🍕</h2>
+                        <div>
+                            <h3 [routerLink]="['/menu']">переходьте у <span>Меню</span> </h3>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isChangePassword">
+        <div class="box__changePassword">
+            <div class="box__changePassword__elem1 box__changePassword__elem">
+                <h3>Зміна паролю</h3>
+                <form [formGroup]="passwordForm" (ngSubmit)="submitChengePassword()">
+                    <div class="box__changePassword__elem4 box__valueUser__elem">
+                        <input type="password" placeholder="Поточний пароль" formControlName="password">
+                    </div>
+                    <div class="box__changePassword__elem4 box__valueUser__elem">
+                        <input type="password" placeholder="Новий пароль" formControlName="newPassword">
+                    </div>
+                    <div class="box__changePassword__elem4 box__valueUser__elem">
+                        <input type="password" placeholder="Повторіть пароль" formControlName="twoNewPassword">
+                    </div>
+                    <div class="box__changePassword__elem4 box__valueUser__elem">
+                        <button type="submit"  class="submit"[disabled]="passwordForm.invalid" >Зберегти зміни</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </ng-container>
+    </form>
+</main>

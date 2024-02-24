@@ -1,0 +1,122 @@
+<main>
+    <div class="box">
+        <form class="box__oneBox" [formGroup]="categoryForm" (ngSubmit)="addCategory()">
+            <label for="imageInput" class="box__oneBox__custom-file-upload" *ngIf="!disabledAddImgCategory">
+                <span>Додати зображення</span>
+            </label>
+            <label class="disabled" *ngIf="disabledAddImgCategory">
+                <span>Додати зображення</span>
+            </label>
+            <input formControlName="imagePath" name="imagePath" type="file" id="imageInput" accept="image/*"
+                class="box__oneBox__imageInput" (change)="upload($event)">
+            <div class="box__oneBox__imageBox" [style.border]="!isBorderFoto?'none':'1px solid black'"
+                [style.backgroundImage]="'url(' +url +')'">
+                <p class="box__oneBox__imageBox__text" *ngIf="isTextFoto">foto</p>
+            </div>
+            <div class="box__oneBox__fotoButtons" [style.display]="!isBorderFoto ?'flex':'none'">
+                <input type="button" value="info"
+                    class="box__oneBox__fotoButtons__button box__oneBox__fotoButtons__buttonInfo"
+                    (click)="clickInfoFoto()">
+                <input type="button" value="delete"
+                    class="box__oneBox__fotoButtons__button box__oneBox__fotoButtons__buttonDelete"
+                    (click)="clickDeleteFoto()">
+            </div>
+            <div *ngIf="isProgressImg" class="progress" role="progressbar" aria-label="Animated striped example"
+                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" [style.width.%]="uploadPercent">
+                </div>
+            </div>
+            <div class="box__oneBox__boxCheckBox">
+                <input type="checkbox" formControlName="dopCategory">
+                <h3>додаток</h3>
+            </div>
+            <input formControlName="name" name="name" type="text" id="name" class="box__oneBox__inputText"
+                placeholder="Name...">
+            <input type="text" formControlName="path" name="path" class="box__oneBox__inputText marginBottom" id="path"
+                placeholder="Path...">
+            <div class="box__oneBox__selected">
+                <h4>Cмакуе з</h4>
+                <select class="box__formWindow__inputs__oneBox__select" formControlName="smakue" id="dopProduct">
+                    <option value="none" disabled>Dop</option>
+                    <option [ngValue]="category.path" *ngFor="let category of adminCategories">
+                        {{category.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="box__oneBox__selected">
+                <h4>Додатки</h4>
+                <select class="box__formWindow__inputs__oneBox__select" formControlName="productDopForCategory"
+                    id="dopProduct">
+                    <option value="none" disabled>Dop</option>
+                    <option [ngValue]="category.path" *ngFor="let category of adminCategories">
+                        {{category.name}}
+                    </option>
+                </select>
+            </div>
+            <button class="box__oneBox__FinalButton" [disabled]=" categoryForm.invalid" type="submit"> {{ editStatus ?
+                'Змінити' : 'Додати'}} категорію</button>
+        </form>
+        <div class="box__twoBox">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">name</th>
+                        <th scope="col">path</th>
+                        <th scope="col">image</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let category of adminCategories">
+                        <th scope="row">{{category.id}}</th>
+                        <td>{{category.name}}</td>
+                        <td>{{category.path}}</td>
+                        <td><img [src]="category.imagePath" alt="" height="50px"></td>
+                        <td>
+                            <button class="actionButtons editDiscount" (click)="editCategory(category)"
+                                [disabled]="editStatus">Edit</button>
+                            <button class="actionButtons deleteDiscount" (click)="clickDeleteCategory(category)"
+                                [disabled]="editStatus">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+<div class="globalAllert" [style.width.px]="w" [style.height.px]="h" [style.display]="isGlobalAllert?'flex':'none'">
+    <div class="globalAllert__box">
+        <div class="globalAllert__box__imagInfo" [style.display]="isInfoImage?'flex':'none'">
+            <div class="globalAllert__box__imagInfo__img" [style.backgroundImage]="'url(' +url +')'"></div>
+            <input type="button" class="globalAllert__box__imagInfo__buttonBlock" value="close"
+                (click)="closeGlobalAllert()">
+        </div>
+        <div class="globalAllert__box__deleteFotoDiscount" [style.display]="isDeleteImage?'block':'none'">
+            <div class="globalAllert__box__deleteFotoDiscount__containerr">
+                <h1>Ви дійсно видаляете цю картинку ?</h1>
+                <div class="globalAllert__box__deleteFotoDiscount__containerr__img"
+                    [style.backgroundImage]="'url(' +url +')'"></div>
+                <div class="globalAllert__box__deleteFotoDiscount__containerr__buttonDelete">
+                    <button class="globalAllert__box__deleteFotoDiscount__containerr__buttonDelete__delete"
+                        (click)="deleteIIIMM()">Так</button>
+                    <button class="globalAllert__box__deleteFotoDiscount__containerr__buttonDelete__continue"
+                        (click)="closeGlobalAllert()">Ні</button>
+                </div>
+            </div>
+        </div>
+        <div class="globalAllert__box__deleteFotoDiscount" [style.display]="isdeleteCategory?'block':'none'">
+            <div class="globalAllert__box__deleteFotoDiscount__containerr">
+                <h1>Ви дійсно видаляете цю категорію ?</h1>
+                <div class="globalAllert__box__deleteFotoDiscount__containerr__imgDeleteDiscount"
+                    [style.backgroundImage]="'url('+deleteImgUrl+')'"></div>
+                <div class="globalAllert__box__deleteFotoDiscount__containerr__buttonDelete">
+                    <button class="globalAllert__box__deleteFotoDiscount__containerr__buttonDelete__delete"
+                        (click)="deleteCategory()">Так</button>
+                    <button class="globalAllert__box__deleteFotoDiscount__containerr__buttonDelete__continue"
+                        (click)="closeGlobalAllert()">Ні</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

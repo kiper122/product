@@ -1,0 +1,5 @@
+<div class="box">
+    <div class="img"  *ngIf="discount && discount.imagePath" [style.backgroundImage]="'url(' + discount.imagePath + ')'"></div>
+    <h1 *ngIf="discount && discount.nameDiscount">{{discount.nameDiscount}}</h1>
+    <div class="text"><span *ngIf="discount && discount.description"> {{discount.description}}</span></div>
+</div>

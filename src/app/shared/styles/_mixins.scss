@@ -1,0 +1,103 @@
+@mixin size($w, $h) {
+    width: $w;
+    height: $h;
+}
+
+@mixin flexCenter() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex($j, $a) {
+    display: flex;
+    justify-content: $j;
+    align-items: $a;
+    // justify-content: space-around;
+    // justify-content: space-between;
+}
+
+@mixin backgrountImage($url, $size) {
+    background-image: $url;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: $size;
+}
+
+@mixin hoverButton() {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    transition-duration: 0.2s;
+    transition-property: border, background-color, color;
+}
+@mixin infoAdmin(){
+    @include size(400px,55px);
+    // border-radius: 10px;
+    background-color: black;
+        // margin-left: 250px;
+    @include flexCenter();
+    font-size: 30px;
+    color: white;
+    margin: 10px 0 0 220px;
+    position: fixed;
+    top: 100px;
+    right: 15px;
+}
+@mixin backgroundImg($size) {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: $size;
+}
+
+@mixin headerAdminPanel() {
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+    margin-top: 20px;
+    @include size(98%, 70px);
+    @include flexCenter();
+    font-size: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+@mixin star($color){
+    .five-pointed-star {
+        --star-color: $color;
+        margin:1em auto;
+        font-size:10em;
+        position: relative;
+        display: block;
+        width: 0px;
+        height: 0px;
+        border-right: 1em solid transparent;
+        border-bottom: 0.7em solid var(--star-color);
+        border-left: 1em solid transparent;
+        transform: rotate(35deg);
+       }
+       .five-pointed-star:before {
+        border-bottom: 0.8em solid var(--star-color);
+        border-left: 0.3em solid transparent;
+        border-right: 0.3em solid transparent;
+        position: absolute;
+        height: 0;
+        width: 0;
+        top: -0.45em;
+        left: -0.65em;
+        display: block;
+        content:"";
+        transform: rotate(-35deg);
+       }
+       .five-pointed-star:after {
+        position: absolute;
+        display: block;
+        top: 0.03em;
+        left: -1.05em;
+        width: 0;
+        height: 0;
+        border-right: 1em solid transparent;
+        border-bottom: 0.7em solid var(--star-color);
+        border-left: 1em solid transparent;
+        transform: rotate(-70deg);
+        content:"";
+       }
+}

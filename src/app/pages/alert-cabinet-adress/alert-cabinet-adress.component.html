@@ -1,0 +1,26 @@
+<form class="example-form" [formGroup]="adressFormGroup" (ngSubmit)="cheangeAdress()">
+    <div class="textAdress">Aдреса</div>  
+        <div class="boxForm">
+            <div class="boxForm__oneForm">
+                <input type="text" formControlName="Citi" placeholder="*Місто">
+            </div>
+            <div class="boxForm__twoForm">
+                <input type="text" formControlName="Street" placeholder="*Вулиця">
+                <input type="text" formControlName="numbersHome" placeholder="*Будинок">
+            </div>
+            <div class="boxForm__twoForm">
+                <input type="text" formControlName="kv" placeholder="*Квартира">
+                <input type="text" formControlName="Entrance" placeholder="*Під'їзд">
+            </div>
+            <div class="boxForm__twoForm">
+                <input type="text" formControlName="Floot" placeholder="*Поверх">
+                <input type="text" formControlName="Entryphone" placeholder="*Домофон">
+            </div>
+            <div class="boxForm__oneForm">
+                <button [disabled]="adressFormGroup.invalid" mat-dialog-close type="submit">Зберегти</button>
+            </div>
+        </div>
+</form>
+<div mat-dialog-actions class="clouse">
+  <button  mat-button mat-dialog-close  color="primary">Close</button>
+</div>

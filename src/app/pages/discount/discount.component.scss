@@ -1,0 +1,123 @@
+@import '../../shared/styles/mixins';
+*{
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.h{
+    @include size(100%,60px);
+    background-color: rgb(0, 0, 0);
+    color: white;
+    @include flexCenter();
+    margin-top: 115px;
+    font-size: 30px;
+}
+
+main{
+    @include size(100%,none);
+    margin-bottom: 20px;
+    margin-top: 35px;
+    @include flexCenter();
+    .box{
+        @include size(90%,none);
+        @include flex(space-around,center);
+        flex-wrap: wrap;
+        .discount{
+            @include size(500px,350px);
+            box-shadow: 1px 1px 20px 1px rgb(199, 198, 198);
+            border-radius: 20px;
+            margin-bottom: 80px;
+            @include flex(space-between,center);
+            flex-direction: column;
+            &:hover{
+              box-shadow: 1px 1px 20px 1px rgb(133, 132, 132);
+              transition-duration: 0.6s;
+              transition-property: box-shadow,transform;
+              transform: scale(1.008);
+              cursor: pointer;
+            }
+            &__img{
+                @include size(100%,270px);
+                border-radius: 10px;
+                @include backgroundImg(550px);
+            }
+            &__buttonInfo{
+                display: block;
+                @include flexCenter();
+                text-decoration: none;
+                @include size(200px,43px);
+                background-color: black;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                margin-bottom: 16px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-size: 20px;
+                &:hover{
+                    @include hoverButton();
+                    border: 2px solid black;
+                }
+
+            }
+        }
+    }
+}
+@media screen and (max-width:500px){
+    .h{
+        @include size(100%,40px);
+        background-color: rgb(0, 0, 0);
+        color: white;
+        @include flexCenter();
+        margin-top: 80px;
+        font-size: 25px;
+    }
+    
+    main{
+        @include size(100%,none);
+        margin-bottom: 20px;
+        margin-top: 35px;
+        @include flexCenter();
+        .box{
+            @include size(90%,none);
+            @include flex(space-around,center);
+            flex-wrap: wrap;
+            .discount{
+                @include size(100%,270px);
+                box-shadow: 1px 1px 20px 1px rgb(199, 198, 198);
+                border-radius: 20px;
+                margin-bottom: 80px;
+                @include flex(space-between,center);
+                flex-direction: column;
+                &:hover{
+                  box-shadow: 1px 1px 20px 1px rgb(133, 132, 132);
+                  transition-duration: 0.6s;
+                  transition-property: box-shadow,transform;
+                  transform: scale(1.008);
+                  cursor: pointer;
+                }
+                &__img{
+                    @include size(100%,200px);
+                    border-radius: 10px;
+                    @include backgroundImg(440px);
+                }
+                &__buttonInfo{
+                    display: block;
+                    @include flexCenter();
+                    text-decoration: none;
+                    @include size(200px,36px);
+                    background-color: black;
+                    color: white;
+                    border: none;
+                    border-radius: 10px;
+                    margin-bottom: 16px;
+                    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                    font-size: 20px;
+                    &:hover{
+                        @include hoverButton();
+                        border: 2px solid black;
+                    }
+    
+                }
+            }
+        }
+    }
+}

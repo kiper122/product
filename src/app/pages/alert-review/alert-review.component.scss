@@ -1,0 +1,128 @@
+@import '../../shared/styles/theme-material';
+@import '../../shared/styles/base';
+@import '../../shared/styles/mixins';
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.clouse{
+    position: absolute;
+    top: 25px;
+    right: 20px;
+}
+    .box{
+        @include size(500px,400px);
+        border-radius: 15px;
+        margin: 50px auto;
+        padding-top: 30px;
+        &__textReview{
+            @include size(100%,60px);
+            @include flexCenter();
+            font-size: 30px;
+        }
+        &__contaierStarts{
+            @include size(70%,100px);
+            margin: 0 auto;
+            @include flex(space-around,center);
+            @extend %stars;
+            @extend %starsActive;
+        }
+        &__starName{
+            @include size(80%,30px);
+            margin: 0 auto;
+            @include flex(space-around,center);
+        }
+        &__input{
+            @include size(100%,100px);
+            margin-top: 10px;
+            @include flexCenter();
+            .mat-form-field{
+                resize: none;
+                @include size(400px,120px);
+                border-radius: 10px;
+                padding: 20px;
+                font-size: 22px;
+            }
+        }
+        &__submit{
+            @include size(100%,80px);
+            @include flex(center,flex-start);
+            &>button{
+                @include size(200px,55px);
+                border-radius: 10px;
+                background-color: rgb(255, 0, 85);
+                border: 1px solid rgb(255, 0, 85);
+                color: white;
+                font-size: 22px;
+                &:disabled{
+                    background-color: rgb(255, 103, 103);
+                }
+            }
+        }
+    }
+
+.activeStar{
+    --star-color: rgb(134, 134, 134);
+
+}
+@media screen and (max-width:500px){
+    .clouse{
+        position: absolute;
+        top: 25px;
+        right: 20px;
+    }
+        .box{
+            @include size(330px,400px);
+            border-radius: 15px;
+            margin: 50px auto;
+            padding-top: 30px;
+            &__textReview{
+                @include size(100%,60px);
+                @include flexCenter();
+                font-size: 30px;
+            }
+            &__contaierStarts{
+                @include size(86%,100px);
+                margin: 0 auto;
+                @include flex(space-around,center);
+                @extend %stars;
+                @extend %starsActive;
+            }
+            &__starName{
+                @include size(93%,30px);
+                margin: 0 auto;
+                @include flex(space-around,center);
+            }
+            &__input{
+                @include size(100%,100px);
+                margin-top: 10px;
+                @include flexCenter();
+                .mat-form-field{
+                    resize: none;
+                    @include size(400px,120px);
+                    border-radius: 10px;
+                    padding: 20px;
+                    font-size: 22px;
+                }
+            }
+            &__submit{
+                @include size(100%,80px);
+                @include flex(center,flex-start);
+                &>button{
+                    @include size(200px,55px);
+                    border-radius: 10px;
+                    background-color: rgb(255, 0, 85);
+                    border: 1px solid rgb(255, 0, 85);
+                    color: white;
+                    font-size: 22px;
+                    &:disabled{
+                        background-color: rgb(255, 103, 103);
+                    }
+                }
+            }
+        }
+    .activeStar{
+        --star-color: rgb(134, 134, 134);
+    
+    }
+}

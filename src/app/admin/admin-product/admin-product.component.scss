@@ -1,0 +1,660 @@
+@import '../../shared/styles/mixins';
+
+.info-admin-panel {
+    @include infoAdmin();
+    @include flex(space-around, center);
+   top: 85px;
+
+    &>span {
+        font-size: 30px;
+    }
+
+    &>button {
+        @include size(150px, 40px);
+        border-radius: 10px;
+        background-color: black;
+        border: 2px solid white;
+        color: white;
+        &:hover{
+            transition-duration: 0.3s;
+            transition-property: background-color,color;
+            background-color: white;
+            color: black;
+        }
+        &:disabled{
+            background-color: rgb(209, 204, 204);
+            border: 2px solid rgb(209,204,204);
+            &:hover{
+                cursor: auto;
+                color: white;
+            }
+        }
+    }
+    .active {
+        color: black;
+        background-color: white;
+    }
+}
+
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+}
+
+.progress {
+    @include size(250px, 20px);
+    margin: 20px auto;
+}
+h1{
+    color: white;
+    font-size: 40px;
+}
+
+main {
+    @include size(100%, 1000px);
+    padding: 80px 15px 0 15px;
+    @include flex(space-around, flex-start);
+
+    .box {
+        width: 100%;
+        height: 100%;
+
+        &__table {
+            @include size(100%, 100%);
+            overflow: auto;
+
+            .table {
+                font-size: 17px;
+
+                .actionButtons {
+                    @include size(70px, 40px);
+                    margin-left: 20px;
+                    border-radius: 10px;
+                    border: 1px none black;
+
+                    &:hover {
+                        @include hoverButton();
+                    }
+                }
+
+
+                .editDiscount {
+                    background-color: rgb(46, 246, 46);
+
+                    &:hover {
+                        background-color: rgb(135, 249, 135);
+                    }
+
+                    &:disabled {
+                        color: white;
+                        background-color: rgb(186, 247, 186);
+
+                        &:hover {
+                            cursor: auto;
+                        }
+                    }
+                }
+
+                .deleteDiscount {
+                    background-color: rgb(250, 70, 70);
+                    margin-top: 10px;
+
+                    &:hover {
+                        background-color: rgb(255, 128, 128);
+                    }
+
+                    &:disabled {
+                        background-color: rgb(243, 219, 219);
+                        color: rgb(255, 255, 255);
+
+                        &:hover {
+                            cursor: auto;
+                            color: rgb(255, 255, 255);
+                        }
+                    }
+                }
+                .detalisProduct{
+                    background-color: rgb(11, 11, 11);
+                    margin-top: 10px;
+                    color: white;
+
+                    &:hover {
+                        background-color: rgb(156, 156, 156);
+                    }
+
+                    &:disabled {
+                        background-color: rgb(243, 219, 219);
+                        color: rgb(255, 255, 255);
+
+                        &:hover {
+                            cursor: auto;
+                            color: rgb(255, 255, 255);
+                        }
+                    }
+
+                }
+            }
+
+            &__info {
+                @include size(100%, 580px);
+                @include flex(space-around, flex-start);
+
+                &__BoxElements {
+                    @include size(35%, 100%);
+
+                    &__elements {
+                        @include size(100%, 45px);
+                        border: 1px solid rgb(163, 161, 161);
+                        @include flexCenter();
+                        background-color: black;
+                        color: white;
+                        border-radius: 10px;
+                        font-size: 25px;
+                    }
+
+                    .img {
+                        @include size(100%, 90px);
+                        display: block;
+                        margin: 0 auto;
+                        @include flexCenter();
+                    }
+                    .action{
+                        height: 60px;
+                    }
+                }
+
+                &__BoxValue {
+                    @include size(64%, 400px);
+
+                    &__elements {
+                        @include size(100%, 45px);
+                        border: 1px solid rgb(163, 161, 161);
+                        @include flex(space-around, center);
+                        background-color: rgb(70, 70, 70);
+                        color: white;
+                        border-radius: 10px;
+                        font-size: 25px;
+
+                        &__button {
+                            @include size(100px, 70%);
+                            border-radius: 10px;
+
+                        }
+                    }
+
+                    .img {
+                        @include size(150px, 90px);
+                        display: block;
+                        margin: 0 auto;
+                    }
+                    .action{
+                        height: 60px;
+                        .edit{
+                            background-color: rgb(56, 177, 12);
+                            color: white;
+                        }
+                        .delete{
+                            background-color: rgb(155, 9, 9);
+                            color: white;
+                        }
+                        
+                    }
+                }
+            }
+        }
+
+        &__formWindow {
+            flex-direction: column;
+            display: block;
+            @include size(100%, 100%);
+            @include flex(space-around, center);
+
+            &__inputs {
+                @include size(90%, 95%);
+                @include flex(space-around, center);
+
+                &__oneBox {
+                    @include size(40%, 100%);
+
+                    &__imageInput {
+                        display: none;
+                    }
+
+                    &__labelImageInput {
+                        @include size(80%, 50px);
+                        margin: 20px auto;
+                        background-color: black;
+                        @include flexCenter();
+                        color: white;
+                        font-size: 20px;
+                        border-radius: 15px;
+
+                        &:hover {
+                            @include hoverButton();
+                            background-color: rgb(46, 46, 47);
+                            color: white;
+                        }
+
+                    }
+
+                    &__imageBox {
+                        @include size(200px, 120px);
+                        margin: 0 auto;
+                        border: 1px solid black;
+
+                        border-radius: 10px;
+                        font-size: 23px;
+                        @include flexCenter();
+                        @include backgroundImg(150px);
+
+                    }
+
+                    &__fotoButtons {
+                        @include flex(space-around, center);
+                        @include size(250px, 40px);
+                        margin: 10px auto 10px auto;
+                        border-radius: 10px;
+
+                        &__button {
+                            @include size(100px, 90%);
+                            border-radius: 10px;
+                            font-size: 18px;
+                            border: 2px solid white;
+
+                            &:hover {
+                                @include hoverButton();
+                            }
+                        }
+
+                        &__buttonInfo {
+                            background-color: black;
+                            color: white;
+
+                            &:hover {
+                                background-color: rgb(46, 46, 47);
+                                color: white;
+                            }
+                        }
+
+                        &__buttonDelete {
+                            background-color: rgb(255, 0, 0);
+                            color: white;
+
+                            &:hover {
+                                background-color: rgb(185, 17, 5);
+                                color: white;
+                            }
+                        }
+                    }
+
+                    &__select {
+                        @include size(80%, 50px);
+                        padding: 10px;
+                        font-size: 20px;
+                        border-radius: 10px;
+                        margin: 20px auto;
+                        display: block;
+                    }
+
+                    &__PriceAndSizeInput {
+                        @include size(90%, 60px);
+                        margin: 0 auto;
+                        @include flex(space-around, center);
+                        padding-left: 10%;
+
+                        &>div>input {
+                            @include size(80%, 40px);
+                            border: 1px solid rgb(115, 113, 113);
+                        }
+                    }
+
+                    &__submitProduct {
+                        display: block;
+                        @include size(100%, 60px);
+                        margin: 20px auto;
+                        margin-bottom: 45px;
+                        background-color: black;
+                        border-radius: 15px;
+                        color: white;
+
+                        &:hover {
+                            @include hoverButton();
+                            background-color: rgb(113, 113, 113);
+                            color: white;
+                        }
+
+                        &:disabled {
+                            background-color: rgb(209, 209, 209);
+                            color: white;
+
+                            &:hover {
+                                cursor: auto;
+                            }
+                        }
+                    }
+
+                    &__Weigth {
+                        margin-top: 35px;
+                    }
+
+                }
+
+                &__twoBox {
+                    @include size(55%, 100%);
+
+                    &__blockInput {
+                        @include size(100%, 100px);
+                        @include flex(space-between, center);
+
+                        &__block {
+                            &__input {
+                                @include size(135px, 40px);
+                                padding: 10px;
+                                font-size: 18px;
+                                margin-left: 5px;
+                                border-radius: 10px;
+                                border: 1px solid rgb(163, 160, 160);
+                            }
+                        }
+                    }
+
+                    &__textarea {
+                        resize: none;
+                        height: 130px;
+                    }
+
+                    &__boxInput {
+                        @include size(100%, 60px);
+                        margin-top: 10px;
+                        @include flex(space-around, center);
+
+                        &>input {
+                            @include size(40%, 40px);
+                            padding: 10px;
+                            border-radius: 10px;
+                            border: 2px solid rgb(150, 147, 147);
+                            &:disabled{
+                                background-color: red;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &__addButton {
+                @include size(65%, 60px);
+                background-color: red;
+            }
+        }
+    }
+}
+
+.panel {
+    height: 600px;
+
+
+}
+
+.globalAllert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(133, 130, 130, 0.286);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+    background-color: rgba(47, 47, 48, 0.21);
+    backdrop-filter: blur(10px);
+    @include flexCenter();
+
+    &__box {
+
+
+        @include size(1000px, 600px);
+        @include flexCenter();
+
+        &__imagInfo {
+            @include size(95%, 95%);
+            @include flex(space-around, center);
+            flex-direction: column;
+
+            &__img {
+                @include size(80%, 80%);
+                @include backgroundImg(400px);
+
+            }
+
+            &__buttonBlock {
+                @include size(300px, 60px);
+                @include flex(space-around, center);
+                background-color: black;
+                color: white;
+                border-radius: 10px;
+
+                &:hover {
+                    @include hoverButton();
+                }
+
+                font-size: 25px;
+            }
+        }
+
+        &__deleteFotoDiscount {
+            @include size(80%, 90%);
+            @include flex(space-around, center);
+
+            &__containerr {
+                @include size(99%, 100%);
+                margin: 0 auto;
+                @include flex(space-between, center);
+                flex-direction: column;
+
+                &__img,
+                &__imgDeleteDiscount {
+                    @include size(80%, 70%);
+                    @include backgroundImg(400px);
+                }
+
+                &__buttonDelete {
+                    @include size(350px, 60px);
+                    @include flex(space-around, center);
+
+                    &__continue,
+                    &__delete {
+                        @include size(140px, 80%);
+                        border: none;
+                        background-color: black;
+
+                        border-radius: 10px;
+                        color: white;
+                        font-size: 20px;
+
+                        &:hover {
+                            @include hoverButton();
+                        }
+                    }
+
+                    &__delete {
+                        background-color: rgb(203, 7, 7);
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+%customButtonForm {
+    @include size(100%, 60px);
+    background-color: black;
+    @include flexCenter();
+    color: white;
+    font-size: 20px;
+    border-radius: 15px;
+
+    &:hover {
+        @include hoverButton();
+        background-color: rgb(46, 46, 47);
+        cursor: auto;
+    }
+}
+
+.disabled {
+    @extend %customButtonForm;
+    display: block;
+    @include flexCenter();
+    background-color: black;
+    border-radius: 15px;
+    background-color: rgba(70, 67, 67, 0.184);
+    color: black;
+
+    @include size(80%, 50px);
+                        margin: 20px auto;
+                        @include flexCenter();
+                        font-size: 20px;
+
+    &:hover {
+        background-color: rgba(70, 67, 67, 0.184);
+        cursor: auto;
+    }
+}
+.inf {
+    width: 100%;
+    @include flexCenter();
+
+    .cardProductInfo {
+        @include size(80%, 500px);
+        margin: 50px 0;
+        @include flex(space-around, center);
+
+        &__oneBox {
+            @include size(50%, 100%);
+            @include flexCenter();
+
+            &__img {
+                @include size(90%, 100%);
+                @include backgroundImg(500px);
+            }
+        }
+
+        &__twoBox {
+            @include size(50%, 100%);
+            @include flex(flex-end, center);
+            flex-direction: column;
+
+            &__description {
+                &>h1{
+                color: black;
+                box-shadow: none;
+                }
+                @include size(100%, 37%);
+                font-size: 20px;
+
+                &>div {
+                    width: 100%;
+                    min-height: 230px;
+                    margin-bottom: 100px;
+                    @include flex(flex-start, flex-start);
+                    padding-bottom: 30px;
+                }
+            }
+
+            &__table {
+                font-size: 21px;
+                @include size(100%, 30%);
+
+                &>h2 ,h4{
+                    margin-left: 10px;
+                    margin: 10px 0px 10px 10px;
+                    font-size: 22px;
+                    
+                }
+            }
+
+            &__buttonsGroup {
+                @include size(100%, 25%);
+                &__changes{
+                    @include size(100%,60%);
+                    @include flex(flex-start,center);
+                    .buttonsAction{
+                        @include size(200px,50px);
+                        margin-left: 100px;
+                        margin-bottom: 100px;
+                        @include flex(space-around,center);
+                        &>button{
+                            @include size(80px,80%);
+                            border-radius: 10px;
+                            border: none;
+                            color: white;
+                            &:hover{
+                                @include hoverButton();
+                                background-color: black;
+                                color: white;
+                            }
+                        }
+                        .edit{
+                            background-color: rgb(30, 224, 12);
+                        }
+                        .delete{
+                            background-color: red;
+                        }
+                    }
+                    &__count{
+                        @include size(30%,50%);
+                        @include flex(space-around,center);
+                        &>button{
+                            @include size(50px,50px);
+                            font-size: 40px;
+                            @include flexCenter();
+                            background-color: white;
+                            border:none;
+                            color: red;
+
+                        }
+                        .minus{
+                            padding-bottom: 10px;
+                        }
+                        &>div{
+                            font-family: monospace;
+                            @include size(50px,50px);
+                            font-size: 30px;
+                            padding-left: 5px;
+                            border-radius: 10px;
+                            text-align: center;
+                        }
+                    }
+                    &__alles{
+                        @include size(40%,50%);
+                        @include flex(space-around,center);
+                        font-size: 25px;
+                        &>div>span{
+                            font-size: 30px;
+                            color:red;
+                            margin: 0px 5px 0 5px;
+                        }
+                    }
+                }
+                &__submit{
+                    @include size(50%,40%);
+                    @include flex(flex-start,center);
+                    &>button{
+                        @include size(80%,80%);
+                        display: block;
+                        border-radius: 10px;
+                        font-size: 20px;
+                        background-color: rgb(239, 7, 7);
+                        border: 3px solid rgb(239, 7, 7);
+                        color: white;
+                        &:hover{
+                            border: 3px solid rgb(239, 7, 7);
+                            background-color: white;
+                            color: rgb(239, 7, 7);
+                            transition-duration: 0.3s;
+                            transition-property: background-color,border,color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

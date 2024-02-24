@@ -1,0 +1,902 @@
+@import '../../shared/styles/mixins';
+%card {
+    @include size(100%, none);
+    margin: 0 auto;
+    @include flex(space-around, center);
+    flex-wrap: wrap;
+    // padding: -50px 50px 0px 50px;
+    margin-bottom: 20px;
+
+    .cardProduct {
+        @include size(410px, 580px);
+        margin: 30px 10px 10px 10px;
+        box-shadow: 0px 0px 10px 1px rgb(234, 234, 234);
+        border-radius: 10px;
+        @include flex(space-between, center);
+        flex-direction: column;
+
+        &:hover {
+            cursor: pointer;
+            box-shadow: 0px 0px 10px 1px rgb(162, 162, 162);
+            transition-duration: 0.4s;
+            transition-property: transform, box-shadow;
+
+        }
+        &__img {
+            @include size(100%, 65%);
+            @include backgroundImg(320px);
+            border-radius: 8px;
+        }
+
+        &__description {
+            color: black;
+            text-align: center;
+
+            &>h1 {
+                text-align: center;
+                display: block;
+                margin: 0 auto;
+
+            }
+
+            &>div {
+                display: block;
+                width: 100%;
+                min-height: 50%;
+
+                // @include flex(flex-start,center);
+                &:hover {
+                    color: rgb(167, 166, 166);
+                }
+            }
+
+            flex-direction: column;
+            @include size(100%, 28%);
+            padding: 0 20px 0 20px;
+            font-size: 17px;
+
+            &>p,
+            h1 {
+                display: block;
+            }
+        }
+
+        &__buttons {
+            @include size(100%, 20%);
+
+            &__oneBox {
+                @include size(100%, 45%);
+                @include flex(space-around, center);
+
+                &__price {
+                    font-size: 30px;
+                    color: rgb(0, 0, 0);
+                    @include size(100px, 30px);
+                    margin-bottom: 30px;
+                }
+
+                &__priceDiscount {
+                    font-size: 35px;
+                    color: rgb(239, 7, 7);
+                    @include size(120px, 30px);
+                    // background-color: red;
+                    margin-bottom: 50px;
+                    margin-right: 50px;
+                }
+
+                .discount {
+                    color: black;
+                    font-size: 26px;
+                    margin-left: 50px;
+                }
+
+                &__countsGroup {
+                    @include size(100px, 40px);
+                    margin-bottom: 20px;
+                    margin-right: 25px;
+                    @include flex(space-around, center);
+
+                    &>button {
+                        @include size(50px, 90%);
+                        border-radius: 10px;
+                        border: none;
+                        color: rgb(239, 7, 7);
+                        background-color: white;
+                        font-size: 30px;
+                        @include flexCenter();
+                        margin: 0 10px;
+                    }
+
+                    &>input {
+                        @include size(50px, 90%);
+                        text-align: center;
+                        border: none;
+                        font-family: monospace;
+                        border: 1px solid black;
+                        border-radius: 10px;
+                        padding-left: 5px;
+                        font-size: 25px;
+                    }
+                }
+            }
+
+            &>button {
+                @include size(70%, 40%);
+                display: block;
+                margin: 0px auto 20px auto;
+                border-radius: 10px;
+                font-size: 20px;
+                background-color: rgb(255, 212, 41);
+                border: 1px solid rgb(255, 212, 41);
+                color: rgb(0, 0, 0);
+
+                &:hover {
+                    border: 1px solid rgb(239, 7, 7);
+                    background-color: white;
+                    color: rgb(239, 7, 7);
+                    transition-duration: 0.3s;
+                    transition-property: background-color, border, color;
+                }
+            }
+
+            .minus {
+                padding-bottom: 10px;
+            }
+
+        }
+        
+    }
+    .m{
+        display: none;
+    }
+    .c{
+        display: flex;
+    }
+    @media screen and (max-width: 1150px) {
+        @include size(100%, none);
+        margin: 0 auto;
+        @include flex(space-around, center);
+        flex-wrap: wrap;
+        // padding: -50px 50px 0px 50px;
+        margin-bottom: 20px;
+    
+        .cardProduct {
+            @include size(350px, 480px);
+            margin: 30px 10px 10px 10px;
+            box-shadow: 0px 0px 10px 1px rgb(234, 234, 234);
+            border-radius: 10px;
+            @include flex(space-between, center);
+            flex-direction: column;
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0px 0px 10px 1px rgb(162, 162, 162);
+                transition-duration: 0.4s;
+                transition-property: transform, box-shadow;
+    
+            }
+    
+            &__img {
+                @include size(100%, 65%);
+                @include backgroundImg(250px);
+                border-radius: 8px;
+            }
+    
+            &__description {
+                color: black;
+                text-align: center;
+                &>div {
+                font-size: 15px;
+                    &:hover {
+                        color: rgb(167, 166, 166);
+                    }
+                }
+                font-size: 17px;
+                &>p,
+                h4 {
+                    display: block;
+                    font-size: 17px;
+                    font-weight: 600;
+                }
+            }
+    
+            &__buttons {
+                @include size(100%, 20%);
+    
+                &__oneBox {
+                    @include size(100%, 45%);
+                    @include flex(space-around, center);
+    
+                    &__price {
+                        font-size: 22px;
+                        color: rgb(0, 0, 0);
+                        @include size(130px, 30px);
+                        margin-bottom: 30px;
+                        margin-right: 20px;
+                    }
+    
+                    &__priceDiscount {
+                        font-size: 25px;
+                        color: rgb(239, 7, 7);
+                        @include size(150px, 30px);
+                        // background-color: red;
+                        margin-bottom: 30px;
+                        margin-right: 30px;
+                    }
+    
+                    .discount {
+                        color: black;
+                        font-size: 20px;
+                        margin-left: 50px;
+                    }
+    
+                    &__countsGroup {
+                        @include size(80px, 35px);
+                        margin-bottom: 25px;
+                        margin-right: 25px;
+    
+                        &>button {
+                            @include size(50px, 90%);
+                            border-radius: 10px;
+                            border: none;
+                            color: rgb(239, 7, 7);
+                            background-color: white;
+                            font-size: 27px;
+                            @include flexCenter();
+                            margin: 0 10px;
+                        }
+    
+                        &>input {
+                            @include size(39px, 85%);
+                            text-align: center;
+                            border: none;
+                            font-family: monospace;
+                            border: 1px solid black;
+                            border-radius: 10px;
+                            padding-left: 5px;
+                            font-size: 22px;
+                        }
+                    }
+                }
+    
+                &>button {
+                    @include size(65%, 38%);
+                    display: block;
+                    margin: 0px auto 20px auto;
+                    border-radius: 10px;
+                    font-size: 18px;
+                    background-color: rgb(255, 212, 41);
+                    border: 1px solid rgb(255, 212, 41);
+                    color: rgb(0, 0, 0);
+    
+                    &:hover {
+                        border: 1px solid rgb(255, 212, 41);
+                        background-color: white;
+                        color: rgb(255, 212, 41);
+                        transition-duration: 0.3s;
+                        transition-property: background-color, border, color;
+                    }
+                }
+    
+            }
+        }
+        .m{
+            display: none;
+        }
+        .c{
+            display: flex;
+        }
+      }
+
+      @media screen and (max-width: 1150px) {
+        @include size(100%, none);
+        margin: 0 auto;
+        @include flex(space-around, center);
+        flex-wrap: wrap;
+        // padding: -50px 50px 0px 50px;
+        margin-bottom: 20px;
+    
+        .cardProduct {
+            @include size(350px, 480px);
+            margin: 30px 10px 10px 10px;
+            box-shadow: 0px 0px 10px 1px rgb(234, 234, 234);
+            border-radius: 10px;
+            @include flex(space-between, center);
+            flex-direction: column;
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0px 0px 10px 1px rgb(162, 162, 162);
+                transition-duration: 0.4s;
+                transition-property: transform, box-shadow;
+    
+            }
+    
+            &__img {
+                @include size(100%, 65%);
+                @include backgroundImg(250px);
+                border-radius: 8px;
+            }
+    
+            &__description {
+                color: black;
+                text-align: center;
+                &>div {
+                font-size: 15px;
+                    &:hover {
+                        color: rgb(167, 166, 166);
+                    }
+                }
+                font-size: 17px;
+                &>p,
+                h1 {
+                    display: block;
+                }
+            }
+    
+            &__buttons {
+                @include size(100%, 20%);
+    
+                &__oneBox {
+                    @include size(100%, 45%);
+                    @include flex(space-around, center);
+    
+                    &__price {
+                        font-size: 22px;
+                        color: rgb(0, 0, 0);
+                        @include size(130px, 30px);
+                        margin-bottom: 30px;
+                        margin-right: 20px;
+                    }
+    
+                    &__priceDiscount {
+                        font-size: 25px;
+                        color: rgb(239, 7, 7);
+                        @include size(150px, 30px);
+                        // background-color: red;
+                        margin-bottom: 30px;
+                        margin-right: 30px;
+                    }
+    
+                    .discount {
+                        color: black;
+                        font-size: 20px;
+                        margin-left: 50px;
+                    }
+    
+                    &__countsGroup {
+                        @include size(80px, 35px);
+                        margin-bottom: 25px;
+                        margin-right: 25px;
+    
+                        &>button {
+                            @include size(50px, 90%);
+                            border-radius: 10px;
+                            border: none;
+                            color: rgb(239, 7, 7);
+                            background-color: white;
+                            font-size: 27px;
+                            @include flexCenter();
+                            margin: 0 10px;
+                        }
+    
+                        &>input {
+                            @include size(39px, 85%);
+                            text-align: center;
+                            border: none;
+                            font-family: monospace;
+                            border: 1px solid black;
+                            border-radius: 10px;
+                            padding-left: 5px;
+                            font-size: 22px;
+                        }
+                    }
+                }
+    
+                &>button {
+                    @include size(65%, 38%);
+                    display: block;
+                    margin: 0px auto 20px auto;
+                    border-radius: 10px;
+                    font-size: 18px;
+                    background-color: rgb(255, 212, 41);
+                    border: 1px solid rgb(255, 212, 41);
+                    color: rgb(0, 0, 0);
+    
+                    &:hover {
+                        border: 1px solid rgb(255, 212, 41);
+                        background-color: white;
+                        color: rgb(255, 212, 41);
+                        transition-duration: 0.3s;
+                        transition-property: background-color, border, color;
+                    }
+                }
+    
+            }
+        }
+        .m{
+            display: none;
+        }
+        .c{
+            display: flex;
+        }
+      }
+      @media screen and (max-width: 500px) {
+        @include size(100%, none);
+        margin: 0 auto;
+        @include flex(space-around, center);
+        flex-wrap: wrap;
+        // padding: -50px 50px 0px 50px;
+        margin-bottom: 20px;
+    
+        .cardProduct {
+            position: relative;
+            @include size(95%, 200px);
+            margin: 10px 10px 10px 10px;
+            box-shadow: 0px 0px 10px 1px rgb(236, 234, 234);
+            border-radius: 10px;
+            @include flex(space-between, center);
+            flex-direction: row;
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0px 0px 10px 1px rgb(162, 162, 162);
+                transition-duration: 0.4s;
+                transition-property: transform, box-shadow;
+    
+            }
+    
+            &__img {
+                @include size(50%, 95%);
+                @include backgroundImg(190px);
+                border-radius: 8px;
+                color: black;
+                margin-left: 7px;
+            }
+            .dopInfo{
+                
+                position: absolute;
+                // top: -70px;
+                top: 8px;
+                left: 12px;
+                
+               
+                // left: -155px;
+                @include size(50px,5px);
+                &>div{
+                    color: black;
+                    font-size: 11px;
+                    &>span{
+                        color: red;
+                    }
+                }
+                // background-color: red;
+            }
+            .twoBox{
+                @include flex(space-around,center);
+                flex-direction: column;
+                @include size(50%,95%);
+                // background-color: blue;
+                margin-right: 13px;
+            }
+            
+    
+            &__description {
+                @include size(100%,45%);
+                padding-top: 6px;
+                // background-color: red;
+                color: black;
+                text-align: start;
+                &>div {
+                font-size: 11px;
+                    &:hover {
+                        color: rgb(167, 166, 166);
+                    }
+                }
+                font-size: 17px;
+                &>p,
+                h1{
+                    display: block;
+                    font-size: 10px;
+                    color: red;
+                }
+            }
+    
+            &__buttons {
+                // background-color: yellow;
+                @include size(100%, 50%);
+                @include flex(space-around,center);
+                flex-direction: column;
+    
+                &__oneBox {
+                    @include size(95%, 45%);
+                    @include flex(space-around, center);
+                    // background-color: blue;
+                    margin-top: 15px;
+    
+                    &__price {
+                        font-size: 19px;
+                        color: rgb(255, 0, 0);
+                        @include size(130px, 30px);
+                        // background-color: red;
+                        @include flexCenter();
+                        margin-bottom: 0px;
+                        margin-right: 20px;
+                    }
+    
+                    &__priceDiscount {
+                        font-size: 19px;
+                        color: rgb(239, 7, 7);
+                        @include size(200px, 30px);
+                        // background-color: red;
+                        // background-color: green;
+                        margin-bottom: 0px;
+                        padding-top: 2px;
+                        // @include flexCenter();
+                        text-align: start;
+                        margin-right: 5px;
+                        margin-left: 4px;
+                    }
+    
+                    .discount {
+                        @include size(100px,30px);
+                        // background-color: blue;
+                        @include flexCenter();
+                        color: black;
+                        font-size: 13px;
+                        margin-left: 1px;
+                        margin-right: 1px;
+                    }
+    
+                    &__countsGroup {
+                        @include size(80px, 30px);
+                        margin-right: 5px;
+                        // background-color: red;
+                        margin-bottom: 0px;
+    
+                        &>button {
+                            @include size(30px, 90%);
+                            border-radius: 10px;
+                            border: none;
+                            color: rgb(239, 7, 7);
+                            background-color: white;
+                            font-size: 23px;
+                            @include flexCenter();
+                            margin: 0 10px;
+                        }
+    
+                        &>input {
+                            @include size(30px, 85%);
+                            text-align: center;
+                            border: none;
+                            font-family: monospace;
+                            border: 1px solid black;
+                            border-radius: 10px;
+                            padding-left: 2px;
+                            font-size: 16px;
+                        }
+                    }
+                }
+    
+                &>button {
+                    @include size(90%, 35%);
+                    display: block;
+                    margin: 0px auto 5px auto;
+                    border-radius: 10px;
+                    font-size: 14px;
+                    background-color: rgb(255, 212, 41);
+                    border: 2px solid rgb(255, 212, 41);
+                    color: rgb(0, 0, 0);
+    
+                    &:hover {
+                        border: 2px solid rgb(255, 212, 41);
+                        background-color: white;
+                        color: rgb(255, 212, 41);
+                        transition-duration: 0.3s;
+                        transition-property: background-color, border, color;
+                    }
+                }
+    
+            }
+        }
+        .m{
+            display: flex;
+        }
+        .c{
+            display: none;
+        }
+      }
+}
+
+%starsActive {
+    .five-pointed-starActive {
+        --star-color: rgb(255, 162, 1);
+        margin: 1em auto;
+        font-size: 2em;
+        position: relative;
+        display: block;
+        width: 0px;
+        height: 0px;
+        border-right: 1em solid transparent;
+        border-bottom: 0.7em solid var(--star-color);
+        border-left: 1em solid transparent;
+        transform: rotate(35deg);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .five-pointed-starActive:before {
+        border-bottom: 0.8em solid var(--star-color);
+        border-left: 0.3em solid transparent;
+        border-right: 0.3em solid transparent;
+        position: absolute;
+        height: 0;
+        width: 0;
+        top: -0.45em;
+        left: -0.65em;
+        display: block;
+        content: "";
+        transform: rotate(-35deg);
+    }
+
+    .five-pointed-starActive:after {
+        position: relative;
+        display: block;
+        top: 0.03em;
+        left: -1.05em;
+        width: 0;
+        height: 0;
+        border-right: 1em solid transparent;
+        border-bottom: 0.7em solid var(--star-color);
+        border-left: 1em solid transparent;
+        transform: rotate(-70deg);
+        content: "";
+    }
+}
+
+%stars {
+    .five-pointed-star {
+        --star-color: rgb(134, 134, 134);
+        margin: 1em auto;
+        font-size: 2em;
+        position: relative;
+        display: block;
+        width: 0px;
+        height: 0px;
+        border-right: 1em solid transparent;
+        border-bottom: 0.7em solid var(--star-color);
+        border-left: 1em solid transparent;
+        transform: rotate(35deg);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .five-pointed-star:before {
+        border-bottom: 0.8em solid var(--star-color);
+        border-left: 0.3em solid transparent;
+        border-right: 0.3em solid transparent;
+        position: absolute;
+        height: 0;
+        width: 0;
+        top: -0.45em;
+        left: -0.65em;
+        display: block;
+        content: "";
+        transform: rotate(-35deg);
+    }
+
+    .five-pointed-star:after {
+        position: relative;
+        display: block;
+        top: 0.03em;
+        left: -1.05em;
+        width: 0;
+        height: 0;
+        border-right: 1em solid transparent;
+        border-bottom: 0.7em solid var(--star-color);
+        border-left: 1em solid transparent;
+        transform: rotate(-70deg);
+        content: "";
+    }
+    @media screen and (max-width:500px){
+        .five-pointed-star {
+            font-size: 1.6em;
+
+        }
+    }
+}
+
+%customButtonForm {
+    @include size(100%, 60px);
+    background-color: black;
+    @include flexCenter();
+    color: white;
+    font-size: 20px;
+    border-radius: 15px;
+
+    &:hover {
+        @include hoverButton();
+        background-color: rgb(46, 46, 47);
+        color: white;
+    }
+}
+
+%dicountAndPaymentAdminInterface {
+    @include size(100%, 100%);
+    padding: 90px 15px 0 15px;
+    @include flex(space-around, flex-start);
+
+    .box {
+        @include size(100%, 80%);
+        @include flex(space-between, center);
+
+        &__oneBox {
+            @include size(32%, 100%);
+
+            &__custom-file-upload {
+                @extend %customButtonForm;
+            }
+
+            &__imageInput {
+                display: none;
+            }
+
+            &__imageBox {
+                @include size(250px, 150px);
+                margin: 30px auto;
+                border: 1px solid black;
+                @include flexCenter();
+                font-size: 25px;
+                border-radius: 6px;
+                @include backgroundImg(210px);
+            }
+
+            &__fotoButtons {
+                @include flex(space-around, center);
+                @include size(250px, 40px);
+                margin: 15px auto;
+                border-radius: 10px;
+
+                &__button {
+                    @include size(100px, 90%);
+                    border-radius: 10px;
+                    font-size: 18px;
+                    border: 2px solid white;
+
+                    &:hover {
+                        @include hoverButton();
+                    }
+                }
+
+                &__buttonInfo {
+                    background-color: black;
+                    color: white;
+
+                    &:hover {
+                        background-color: rgb(46, 46, 47);
+                        color: white;
+                    }
+                }
+
+                &__buttonDelete {
+                    background-color: rgb(255, 0, 0);
+                    color: white;
+
+                    &:hover {
+                        background-color: rgb(185, 17, 5);
+                        color: white;
+                    }
+                }
+            }
+
+            &__textArea {
+                @include size(250px, 120px);
+                margin: 0 auto 10px auto;
+                resize: none;
+                display: block;
+                font-size: 18px;
+                padding: 10px;
+            }
+
+            .nameDiscount {
+                display: block;
+                margin: 0 auto 20px auto;
+                @include size(250px, 40px);
+                border-radius: 10px;
+                font-size: 23px;
+                padding: 10px;
+                border: 1px solid rgb(134, 133, 133);
+            }
+
+            &__FinalButton {
+                @extend %customButtonForm;
+
+                &:disabled {
+                    background-color: rgba(70, 67, 67, 0.184);
+                    color: black;
+
+                    &:hover {
+                        cursor: auto;
+                    }
+                }
+            }
+        }
+
+        &__twoBox {
+            // border: 1px solid black;
+            @include size(65%, 100%);
+            overflow: auto;
+
+            .table {
+                margin-top: 50px;
+
+                .actionButtons {
+                    @include size(70px, 40px);
+                    margin-left: 20px;
+                    border-radius: 10px;
+                    border: 1px none black;
+
+                    &:hover {
+                        @include hoverButton();
+                    }
+                }
+
+                .editDiscount {
+                    background-color: rgb(46, 246, 46);
+
+                    &:hover {
+                        background-color: rgb(135, 249, 135);
+                    }
+
+                    &:disabled {
+                        color: white;
+                        background-color: rgb(186, 247, 186);
+
+                        &:hover {
+                            cursor: auto;
+                        }
+                    }
+                }
+
+                .deleteDiscount {
+                    background-color: rgb(250, 70, 70);
+                    margin-top: 10px;
+
+                    &:hover {
+                        background-color: rgb(255, 128, 128);
+                    }
+
+                    &:disabled {
+                        background-color: rgb(243, 219, 219);
+                        color: rgb(255, 255, 255);
+
+                        &:hover {
+                            cursor: auto;
+                            color: rgb(255, 255, 255);
+                        }
+                    }
+                }
+            }
+        }
+    }
+      
+}
+%lentaInfo{
+    @include size(100%,65px);
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    @include flexCenter();
+    margin-top: 115px;
+    font-size: 30px;
+    @media screen and (max-width:850px){
+        margin-top: 100px;
+    }
+    @media screen and (max-width:500px){
+        margin-top: 100px;
+        font-size: 26px;
+         @include size(100%,40px);
+        
+
+    }
+}

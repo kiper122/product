@@ -1,0 +1,279 @@
+<div class="link">
+    <a class="activeLink" [routerLink]="['/menu']">Меню</a>
+    <div>|</div>
+    <a class="activeLink"
+        *ngIf="currentProduct && currentProduct.category && currentProduct.category.path && currentProduct.category.name"
+        [routerLink]="['/menu/product/',currentProduct.category.path]">{{currentProduct.category.name}}</a>
+</div>
+<main [style.minHeight.px]="h-200">
+    <div class="cardProductInfo">
+        <div class="cardProductInfo__oneBox">
+            <div *ngIf="currentProduct && currentProduct.imagePath" class="cardProductInfo__oneBox__img"
+                [style.backgroundImage]="'url('+currentProduct.imagePath"></div>
+        </div>
+        <div class="cardProductInfo__twoBox">
+            <div class="cardProductInfo__twoBox__description">
+                <h1 *ngIf="currentProduct && currentProduct.name">{{currentProduct.name}}</h1>
+                <div>
+                    <p *ngIf="currentProduct && currentProduct.description">{{currentProduct.description}}</p>
+                </div>
+            </div>
+            <div class="cardProductInfo__twoBox__table"
+                *ngIf="currentProduct && currentProduct.proteins || currentProduct.weight || currentProduct.size">
+                <table class="table" *ngIf="currentProduct.proteins">
+                    <thead>
+                        <tr>
+                            <th scope="col">Білки</th>
+                            <th scope="col">Вуглеводи</th>
+                            <th scope="col">Жири</th>
+                            <th scope="col">Калорійність</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td *ngIf="currentProduct  && currentProduct.proteins">{{currentProduct.proteins}} g</td>
+                            <td *ngIf="currentProduct  && currentProduct.carbohydrates">{{currentProduct.carbohydrates}}
+                                g</td>
+                            <td *ngIf="currentProduct  && currentProduct.fat">{{currentProduct.fat}} g</td>
+                            <td *ngIf="currentProduct  && currentProduct.calories">{{currentProduct.calories}} ккал</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4 *ngIf="!!currentProduct.weight && currentProduct && currentProduct.weight ">вага : {{
+                    currentProduct.weight}} g</h4>
+                <h4 *ngIf="!!currentProduct.size && currentProduct && currentProduct.size">розмір : {{
+                    currentProduct.size}} cm</h4>
+            </div>
+            <div class="cardProductInfo__twoBox__buttonsGroup" [style.marginTop.px]="!!currentProduct.size ? 20 : 0">
+                <div class="cardProductInfo__twoBox__buttonsGroup__changes">
+                    <div class="cardProductInfo__twoBox__buttonsGroup__changes__count">
+                        <button (click)="productCount(currentProduct,false)" class="minus">-</button>
+                        <div *ngIf="currentProduct && currentProduct.count">{{currentProduct.count}}</div>
+                        <button (click)="productCount(currentProduct,true)">+</button>
+                    </div>
+                    <div class="cardProductInfo__twoBox__buttonsGroup__changes__alles">
+                        <ng-container *ngIf="!currentProduct.discount ;else productDiscount">
+                            <div *ngIf="currentProduct.price && currentProduct.count">Всього :
+                                <span>{{currentProduct.price * currentProduct.count}}</span> ₴
+                            </div>
+                        </ng-container>
+                        <ng-template #productDiscount>
+                            <div>Всього : <s><span
+                                        *ngIf="currentProduct.price && currentProduct.count">{{currentProduct.price *
+                                        currentProduct.count}}</span></s>
+                                <span
+                                    *ngIf="currentProduct.price &&  currentProduct.discount && currentProduct.count ">{{(currentProduct.price-currentProduct.discount)
+                                    * currentProduct.count}} ₴</span>
+                            </div>
+                        </ng-template>
+
+                    </div>
+                </div>
+                <div class="cardProductInfo__twoBox__buttonsGroup__submit">
+                    <button type="button" (click)="addToBasket(currentProduct)">Додати у кошик</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<ng-container *ngIf="productDOPOVNENYA">
+    <h1 class="textInfoDopProduct">{{productDOPOVNENYA[0].category.name}}</h1>
+</ng-container>
+
+<div class="mainProductCategory" *ngIf="productDOPOVNENYA">
+    <a class="cardProduct" *ngFor="let product of productDOPOVNENYA"
+        [routerLink]="['/menu/product/',product.category.path,product.id]">
+        <div class="cardProduct__img" *ngIf="product && product.imagePath"
+            [style.backgroundImage]="'url('+product.imagePath+')'"></div>
+        <div class="cardProduct__description" [routerLink]="['/menu/product/',product.category.path,product.id]">
+            <h4 *ngIf="product && product.name">{{product.name}}</h4>
+        </div>
+        <div class="cardProduct__buttons">
+            <div class="cardProduct__buttons__oneBox">
+                <ng-container *ngIf="!product.discount ;else priseDiscount">
+                    <div class="cardProduct__buttons__oneBox__price" *ngIf="product.price && product.count ">
+                        {{product.price * product.count}} ₴</div>
+                </ng-container>
+                <ng-template #priseDiscount>
+                    <div class="cardProduct__buttons__oneBox__price discount" *ngIf="product.price && product.count">
+                        <s>{{product.price * product.count}}</s> ₴
+                    </div>
+                    <div class="cardProduct__buttons__oneBox__priceDiscount"
+                        *ngIf="product.price &&  product.discount && product.count">{{(product.price - product.discount)
+                        *
+                        product.count}} ₴ </div>
+                </ng-template>
+
+
+                <div class="cardProduct__buttons__oneBox__countsGroup">
+                    <button (click)="productCount(product,false)" class="minus">-</button>
+                    <input type="text" [value]="product.count" readonly>
+                    <button (click)="productCount(product,true)">+</button>
+                </div>
+            </div>
+            <button type="button" (click)="addToBasket(product)">Додати</button>
+        </div>
+    </a>
+</div>
+<div class="textInfoDopProduct">
+    Чудово смакує з
+</div>
+<div class="Smakue" *ngIf="smakuePRODUCT">
+    <a class="cardProduct c" *ngFor="let productDop of smakuePRODUCT">
+        <div *ngIf="productDop && productDop.imagePath" class="cardProduct__img"
+            [style.backgroundImage]="'url('+productDop.imagePath+')'"></div>
+        <div class="cardProduct__description" *ngIf="productDop && productDop.category && productDop.category.path"
+            [routerLink]="['/menu/product/',productDop.category.path,productDop.id]">
+            <h2 *ngIf="productDop.name ">{{productDop.name}}</h2>
+            <div>
+                <p *ngIf="productDop.description ">{{productDop.description |slice:0:120}} <span
+                        *ngIf="productDop.description.length>125">...</span></p>
+            </div>
+        </div>
+        <div class="cardProduct__buttons">
+            <div class="cardProduct__buttons__oneBox">
+                <ng-container *ngIf="!productDop.discount ;else priseDiscount">
+                    <div *ngIf="productDop.price && productDop.count" class="cardProduct__buttons__oneBox__price">
+                        {{productDop.price * productDop.count}} ₴</div>
+                </ng-container>
+                <ng-template #priseDiscount>
+                    <div class="cardProduct__buttons__oneBox__price discount"
+                        *ngIf="productDop.price && productDop.count"><s>{{productDop.price * productDop.count}}</s> ₴
+                    </div>
+                    <div class="cardProduct__buttons__oneBox__priceDiscount"
+                        *ngIf="productDop.price && productDop.discount && productDop.count">{{(productDop.price -
+                        productDop.discount) *
+                        productDop.count}} ₴ </div>
+                </ng-template>
+
+
+                <div class="cardProduct__buttons__oneBox__countsGroup">
+                    <button (click)="productCount(productDop,false)" class="minus">-</button>
+                    <input type="text" [value]="productDop.count" readonly>
+                    <button (click)="productCount(productDop,true)">+</button>
+                </div>
+            </div>
+            <button type="button" (click)="addToBasket(productDop)">Додати у кошик</button>
+        </div>
+    </a>
+    <a class="cardProduct m" *ngFor="let product of smakuePRODUCT">
+        <div class="cardProduct__img " [style.backgroundImage]="'url('+product.imagePath+')'"
+            [routerLink]="['/menu/product/',product.category.path,product.id]">
+        </div>
+        <div class="dopInfo">
+            <div class="oneText" *ngIf="product.weight"><span>{{product.weight }}</span> g</div>
+            <div class="twoText" *ngIf="product.size"><span>{{product.size}}</span> cм</div>
+        </div>
+        <div class="twoBox">
+            <div class="cardProduct__description" [routerLink]="['/menu/product/',product.category.path,product.id]">
+                <h4>{{product.name}}</h4>
+                <div>
+                    <p>{{product.description |slice:0:120}} <span *ngIf="product.description.length>120">...</span></p>
+                </div>
+            </div>
+            <div class="cardProduct__buttons">
+                <div class="cardProduct__buttons__oneBox">
+                    <ng-container *ngIf="!product.discount ;else priseDiscount">
+                        <div class="cardProduct__buttons__oneBox__price">{{product.price * product.count}} ₴</div>
+                    </ng-container>
+                    <ng-template #priseDiscount>
+                        <div class="cardProduct__buttons__oneBox__price discount"><s>{{product.price *
+                                product.count}}</s> ₴
+                        </div>
+                        <div class="cardProduct__buttons__oneBox__priceDiscount">{{(product.price - product.discount) *
+                            product.count}} ₴ </div>
+                    </ng-template>
+                    <div class="cardProduct__buttons__oneBox__countsGroup">
+                        <button (click)="productCount(product,false)" class="minus">-</button>
+                        <input type="text" [value]="product.count" readonly>
+                        <button (click)="productCount(product,true)">+</button>
+                    </div>
+                </div>
+                <button type="button" (click)="addToBasket(product)">Додати у кошик</button>
+            </div>
+        </div>
+    </a>
+</div>
+
+
+<div class="textInfoDopProduct">
+    Дивіться також :
+</div>
+<div class="Smakue" *ngIf="smakuePRODUCT">
+    <a class="cardProduct c" *ngFor="let productDop of products"
+        [routerLink]="['/menu/product/',currentProduct.category.path]">
+        <div *ngIf="productDop && productDop.imagePath" class="cardProduct__img"
+            [style.backgroundImage]="'url('+productDop.imagePath+')'"></div>
+        <div class="cardProduct__description" *ngIf="productDop && productDop.category && productDop.category.path"
+            [routerLink]="['/menu/product/',productDop.category.path,productDop.id]">
+            <h2 *ngIf="productDop.name ">{{productDop.name}}</h2>
+            <div>
+                <p *ngIf="productDop.description ">{{productDop.description |slice:0:120}} <span
+                        *ngIf="productDop.description.length>125">...</span></p>
+            </div>
+        </div>
+        <div class="cardProduct__buttons">
+            <div class="cardProduct__buttons__oneBox">
+                <ng-container *ngIf="!productDop.discount ;else priseDiscount">
+                    <div *ngIf="productDop.price && productDop.count" class="cardProduct__buttons__oneBox__price">
+                        {{productDop.price * productDop.count}} ₴</div>
+                </ng-container>
+                <ng-template #priseDiscount>
+                    <div class="cardProduct__buttons__oneBox__price discount"
+                        *ngIf="productDop.price && productDop.count"><s>{{productDop.price * productDop.count}}</s> ₴
+                    </div>
+                    <div class="cardProduct__buttons__oneBox__priceDiscount"
+                        *ngIf="productDop.price && productDop.discount && productDop.count">{{(productDop.price -
+                        productDop.discount) *
+                        productDop.count}} ₴ </div>
+                </ng-template>
+
+
+                <div class="cardProduct__buttons__oneBox__countsGroup">
+                    <button (click)="productCount(productDop,false)" class="minus">-</button>
+                    <input type="text" [value]="productDop.count" readonly>
+                    <button (click)="productCount(productDop,true)">+</button>
+                </div>
+            </div>
+            <button type="button" (click)="addToBasket(productDop)">Додати у кошик</button>
+        </div>
+    </a>
+    <a class="cardProduct m" *ngFor="let product of products"
+        [routerLink]="['/menu/product/',currentProduct.category.path]">
+        <div class="cardProduct__img " [style.backgroundImage]="'url('+product.imagePath+')'"
+            [routerLink]="['/menu/product/',product.category.path,product.id]">
+        </div>
+        <div class="dopInfo">
+            <div class="oneText" *ngIf="product.weight"><span>{{product.weight }}</span> g</div>
+            <div class="twoText" *ngIf="product.size"><span>{{product.size}}</span> cм</div>
+        </div>
+        <div class="twoBox">
+            <div class="cardProduct__description" [routerLink]="['/menu/product/',product.category.path,product.id]">
+                <h4>{{product.name}}</h4>
+                <div>
+                    <p>{{product.description |slice:0:120}} <span *ngIf="product.description.length>120">...</span></p>
+                </div>
+            </div>
+            <div class="cardProduct__buttons">
+                <div class="cardProduct__buttons__oneBox">
+                    <ng-container *ngIf="!product.discount ;else priseDiscount">
+                        <div class="cardProduct__buttons__oneBox__price">{{product.price * product.count}} ₴</div>
+                    </ng-container>
+                    <ng-template #priseDiscount>
+                        <div class="cardProduct__buttons__oneBox__price discount"><s>{{product.price *
+                                product.count}}</s> ₴
+                        </div>
+                        <div class="cardProduct__buttons__oneBox__priceDiscount">{{(product.price - product.discount) *
+                            product.count}} ₴ </div>
+                    </ng-template>
+                    <div class="cardProduct__buttons__oneBox__countsGroup">
+                        <button (click)="productCount(product,false)" class="minus">-</button>
+                        <input type="text" [value]="product.count" readonly>
+                        <button (click)="productCount(product,true)">+</button>
+                    </div>
+                </div>
+                <button type="button" (click)="addToBasket(product)">Додати у кошик</button>
+            </div>
+        </div>
+    </a>
+</div>

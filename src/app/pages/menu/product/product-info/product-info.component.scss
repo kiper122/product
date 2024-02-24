@@ -1,0 +1,817 @@
+@import '../../../../shared/styles/mixins';
+@import '../../../../shared/styles/base';
+.link {
+    position: fixed;
+    @include size(200px, 50px);
+    top: 150px;
+    left: 50px;
+    @include flex(space-around, center);
+
+    &>a{
+        @include flexCenter();
+        color: black;
+        font-size: 20px;
+        &:hover{
+            cursor: auto;
+        }
+
+    }
+    &>div{
+        @include size(10%, 100%);
+        @include flexCenter();
+        font-size: 50px;
+        color: rgb(0, 0, 0);
+    }
+    .activeLink{
+        @include size(30%, 100%);
+        font-size: 25px;
+
+
+        &:hover{
+            cursor: pointer;
+            color: rgb(175, 115, 3);
+        }
+
+    }
+
+    ;
+}
+
+main {
+    width: 100%;
+    @include flexCenter();
+
+    .cardProductInfo {
+        @include size(80%, 550px);
+        margin: 50px 0;
+        @include flex(space-around, center);
+
+        &__oneBox {
+            @include size(50%, 100%);
+            @include flexCenter();
+
+            &__img {
+                @include size(90%, 100%);
+                @include backgroundImg(500px);
+            }
+        }
+
+        &__twoBox {
+            @include size(50%, 100%);
+            @include flex(flex-end, center);
+            flex-direction: column;
+
+            &__description {
+                @include size(100%, 37%);
+                font-size: 20px;
+
+                &>div {
+                    width: 100%;
+                    min-height: 200px;
+                    @include flex(flex-start, center);
+                    padding-bottom: 30px;
+                }
+            }
+
+            &__table {
+                font-size: 21px;
+                @include size(100%, 30%);
+
+                &>h4 {
+                    margin-left: 10px;
+                    margin: 10px 0px 10px 10px;
+
+                }
+            }
+
+            &__buttonsGroup {
+                @include size(100%, 25%);
+                &__changes{
+                    @include size(100%,60%);
+                    @include flex(flex-start,center);
+                    &__count{
+                        @include size(30%,50%);
+                        @include flex(space-around,center);
+                        &>button{
+                            @include size(50px,50px);
+                            font-size: 40px;
+                            @include flexCenter();
+                            background-color: white;
+                            border:none;
+                            color: red;
+
+                        }
+                        .minus{
+                            padding-bottom: 10px;
+                        }
+                        &>div{
+                            font-family: monospace;
+                            @include size(50px,50px);
+                            font-size: 30px;
+                            padding-left: 5px;
+                            border-radius: 10px;
+                            text-align: center;
+                        }
+                    }
+                    &__alles{
+                        @include size(50%,50%);
+                        @include flex(space-around,center);
+                        font-size: 25px;
+                        &>div>span{
+                            font-size: 30px;
+                            color:red;
+                            margin: 0px 5px 0 5px;
+                        }
+                        &>div>s>span{
+                            margin: 0px 5px 0 5px;
+                            font-size: 26px;
+                        }
+                    }
+                }
+                &__submit{
+                    @include size(50%,40%);
+                    @include flex(flex-start,center);
+                    &>button{
+                        @include size(80%,80%);
+                        display: block;
+                        border-radius: 10px;
+                        font-size: 20px;
+                        background-color: rgb(239, 7, 7);
+                        border: 3px solid rgb(239, 7, 7);
+                        color: white;
+                        &:hover{
+                            border: 3px solid rgb(239, 7, 7);
+                            background-color: white;
+                            color: rgb(239, 7, 7);
+                            transition-duration: 0.3s;
+                            transition-property: background-color,border,color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.dopText{
+    @include size(100%,50px);
+    @include flexCenter();
+    font-size: 40px;
+    color: black;
+    margin: 20px 0 ;
+}
+
+.textInfoDopProduct{
+    @include size(80%,50px);
+    margin: 0 auto;
+    font-size: 40px;
+    @include flexCenter();
+}
+.Smakue{
+    @extend %card;
+
+}
+.mainProductCategory{
+    @include size(100%,none);
+    min-height: 300px;
+    margin: 0 auto;
+    @include flex(space-around,center);
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    .cardProduct{
+        @include size(200px,300px);
+        margin: 50px 10px 10px 10px;
+        box-shadow: 0px 0px 10px 1px rgb(234, 234, 234);
+        border-radius: 10px;
+        @include flex(space-between,center);
+        flex-direction: column;
+        &:hover{
+            cursor: pointer;
+        box-shadow: 0px 0px 10px 1px rgb(162, 162, 162);
+        transition-duration: 0.4s;
+        transition-property:transform,box-shadow;
+
+        }
+        &__img{
+            @include size(100%,65%);
+            @include backgroundImg(150px);
+            border-radius: 8px;
+        }
+        &__description{
+            color: black;
+            text-align: center;
+            flex-direction: column;
+            @include size(100%,28%);
+            padding: 0 20px 0 20px;
+            font-size: 17px;
+            &>p,h1{
+                display: block;
+            }
+        }
+        &__buttons{
+            @include size(100%,20%);
+            &__oneBox{
+                @include size(100%,45%);
+                @include flex(space-around,center);
+                &__price{
+                    font-size: 20px;
+                    color: rgb(239, 7, 7);
+                    @include size(100px,30px);
+                    margin-bottom: 30px;
+                    margin-left: 20px;
+                }
+                &__priceDiscount{
+                    font-size: 35px;
+                    color: rgb(239, 7, 7);
+                    @include size(120px,30px);
+                    margin-bottom: 50px;
+                    margin-right: 50px;
+                }
+                .discount{
+                    color: black;
+                    font-size: 26px;
+                    margin-left: 50px;
+                }
+                &__countsGroup{
+                    @include size(100px,40px);
+                    margin-bottom: 20px;
+                    margin-right: 25px;
+                    @include flex(space-around,center);
+                    &>button{
+                        @include size(40px,90%);
+                        border-radius: 10px;
+                        border: none;
+                        color: rgb(239, 7, 7);
+                        background-color: white;
+                        font-size: 30px;
+                        @include flexCenter();
+                        margin: 0 10px;
+                    }
+                    &>input{
+                        @include size(35px,70%);
+                        text-align: center;
+                        border: none;
+                        font-family: monospace;
+                        border: 1px solid black;
+                        border-radius: 10px;
+                        padding-left: 5px;
+                        font-size: 20px;
+                    }
+                }
+            }
+            &>button{
+                @include size(60%,50%);
+                display: block;
+                margin: 0px auto 50px auto;
+                border-radius: 10px;
+                font-size: 18px;
+                background-color: rgb(239, 7, 7);
+                border: 1px solid rgb(239, 7, 7);
+                color: white;
+                &:hover{
+                    border: 1px solid rgb(239, 7, 7);
+                    background-color: white;
+                    color: rgb(239, 7, 7);
+                    transition-duration: 0.3s;
+                    transition-property: background-color,border,color;
+                }
+            }
+            .minus{
+                padding-bottom: 10px;
+            }
+
+        }
+    }
+}
+
+@media screen and (max-width:1050px){
+    main {
+        .cardProductInfo {
+            &__oneBox {
+                &__img {
+                    @include backgroundImg(400px);
+                }
+            }
+            &__twoBox {
+    
+                &__description {
+                    @include size(100%, 37%);
+                    font-size: 18px;
+                }
+    
+                &__table {
+                    font-size: 15px;
+                    @include size(100%, 30%);
+    
+                    &>h4 {
+                        margin-left: 10px;
+                        margin: 10px 0px 10px 10px;
+    
+                    }
+                }
+    
+                &__buttonsGroup {
+                    @include size(100%, 25%);
+                    &__changes{
+                        @include size(100%,60%);
+                        @include flex(flex-start,center);
+                        &__count{
+                            @include size(30%,50%);
+                            @include flex(space-around,center);
+                            &>button{
+                                font-size: 30px;
+
+                            }
+                            .minus{
+                                padding-bottom: 10px;
+                            }
+                            &>div{
+                                font-family: monospace;
+                                @include size(50px,50px);
+                                font-size: 28px;
+                                padding-left: 5px;
+                                border-radius: 10px;
+                                text-align: center;
+                            }
+                        }
+                        &__alles{
+                            @include size(70%,50%);
+                            @include flex(space-around,center);
+                            font-size: 25px;
+                            &>div>span{
+                                font-size: 25px;
+                                color:red;
+                                margin: 0px 5px 0 5px;
+                            }
+                            &>div>s>span{
+                                margin: 0px 5px 0 5px;
+                                font-size: 22px;
+                            }
+                        }
+                    }
+                    &__submit{
+                        @include size(50%,40%);
+                        @include flex(flex-start,center);
+                        &>button{
+                            @include size(80%,80%);
+                            display: block;
+                            border-radius: 10px;
+                            font-size: 17px;
+                            background-color: rgb(239, 7, 7);
+                            border: 3px solid rgb(239, 7, 7);
+                            color: white;
+                            &:hover{
+                                border: 3px solid rgb(239, 7, 7);
+                                background-color: white;
+                                color: rgb(239, 7, 7);
+                                transition-duration: 0.3s;
+                                transition-property: background-color,border,color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .dopText{
+        @include size(100%,50px);
+        @include flexCenter();
+        font-size: 30px;
+        color: black;
+    }    
+}
+@media screen and (max-width:850px){
+    main {
+        .cardProductInfo {
+            &__oneBox {
+                &__img {
+                    @include backgroundImg(350px);
+                }
+            }
+            &__twoBox {
+    
+                &__description {
+                    @include size(100%, 37%);
+                    font-size: 18px;
+                }
+    
+                &__table {
+                    font-size: 15px;
+                    @include size(100%, 30%);
+    
+                    &>h4 {
+                        margin-left: 10px;
+                        margin: 10px 0px 10px 10px;
+    
+                    }
+                }
+    
+                &__buttonsGroup {
+                    @include size(100%, 25%);
+                    &__changes{
+                        @include size(100%,60%);
+                        @include flex(flex-start,center);
+                        &__count{
+                            @include size(30%,50%);
+                            @include flex(space-around,center);
+                            &>button{
+                                font-size: 30px;
+
+                            }
+                            .minus{
+                                padding-bottom: 10px;
+                            }
+                            &>div{
+                                font-family: monospace;
+                                @include size(50px,50px);
+                                font-size: 28px;
+                                padding-left: 5px;
+                                border-radius: 10px;
+                                text-align: center;
+                            }
+                        }
+                        &__alles{
+                            @include size(70%,50%);
+                            @include flex(space-around,center);
+                            font-size: 25px;
+                            &>div>span{
+                                font-size: 25px;
+                                color:red;
+                                margin: 0px 5px 0 5px;
+                            }
+                            &>div>s>span{
+                                margin: 0px 5px 0 5px;
+                                font-size: 22px;
+                            }
+                        }
+                    }
+                    &__submit{
+                        @include size(50%,40%);
+                        @include flex(flex-start,center);
+                        &>button{
+                            @include size(80%,80%);
+                            display: block;
+                            border-radius: 10px;
+                            font-size: 15px;
+                            background-color: rgb(239, 7, 7);
+                            border: 3px solid rgb(239, 7, 7);
+                            color: white;
+                            &:hover{
+                                border: 3px solid rgb(239, 7, 7);
+                                background-color: white;
+                                color: rgb(239, 7, 7);
+                                transition-duration: 0.3s;
+                                transition-property: background-color,border,color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .dopText{
+        @include size(100%,50px);
+        @include flexCenter();
+        font-size: 30px;
+        color: black;
+    }    
+}
+@media screen and (max-width:725px){
+    main {
+        .cardProductInfo {
+            &__oneBox {
+                &__img {
+                    @include backgroundImg(300px);
+                }
+            }
+            &__twoBox {
+    
+                &__description {
+                    @include size(100%, 37%);
+                    font-size: 15px;
+                }
+    
+                &__table {
+                    font-size: 11px;
+                    @include size(100%, 30%);
+    
+                    &>h4 {
+                        margin-left: 10px;
+                        margin: 10px 0px 10px 10px;
+    
+                    }
+                }
+    
+                &__buttonsGroup {
+                    @include size(100%, 25%);
+                    &__changes{
+                        @include size(100%,60%);
+                        @include flex(flex-start,center);
+                        &__count{
+                            @include size(30%,40%);
+                            @include flex(space-around,center);
+                            &>button{
+                                font-size: 26px;
+
+                            }
+                            .minus{
+                                padding-bottom: 10px;
+                            }
+                            &>div{
+                                font-family: monospace;
+                                @include size(50px,50px);
+                                font-size: 22px;
+                                padding-left: 5px;
+                                border-radius: 10px;
+                                text-align: center;
+                            }
+                        }
+                        &__alles{
+                            @include size(70%,50%);
+                            @include flex(space-around,center);
+                            font-size: 20px;
+                            &>div>span{
+                                font-size: 20px;
+                                color:red;
+                                margin: 0px 5px 0 5px;
+                            }
+                            &>div>s>span{
+                                margin: 0px 5px 0 5px;
+                                font-size: 22px;
+                            }
+                        }
+                    }
+                    &__submit{
+                        @include size(50%,40%);
+                        @include flex(flex-start,center);
+                        &>button{
+                            @include size(80%,80%);
+                            display: block;
+                            border-radius: 10px;
+                            font-size: 12px;
+                            background-color: rgb(239, 7, 7);
+                            border: 3px solid rgb(239, 7, 7);
+                            color: white;
+                            &:hover{
+                                border: 3px solid rgb(239, 7, 7);
+                                background-color: white;
+                                color: rgb(239, 7, 7);
+                                transition-duration: 0.3s;
+                                transition-property: background-color,border,color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .dopText{
+        @include size(100%,50px);
+        @include flexCenter();
+        font-size: 30px;
+        color: black;
+    }    
+}
+@media screen and (max-width:500px){
+    .link{
+        display: none;
+    }
+    main {
+        .cardProductInfo {
+            @include flex(space-around,center);
+            flex-direction: column;
+            @include size(95%,800px);
+            margin-top: -10px;
+            margin-top: 0px;
+            &__oneBox {
+                @include size(100%,350px);
+                &__img {
+                    @include backgroundImg(360px);
+                }
+            }
+            &__twoBox {
+                @include size(95%,445px);
+    
+                &__description {
+                    @include size(100%, 35%);
+                    margin-top: 0px;
+                    font-size: 14px;
+                    &>div>p{
+                        margin-bottom: 40px;
+                        font-size: 17px;
+                    }
+                    &>h1{
+                        @include flexCenter();
+                        font-size: 30px;
+                        font-weight: 600;
+                        display: block;
+                        @include size(100%,30px);
+                        margin: 0px 0px 0px 0;
+                    }
+                }
+    
+                &__table {
+                    font-size: 16px;
+                    @include size(100%, none);
+                    min-height: 10%;
+    
+                    &>h4 {
+                        margin-left: 10px;
+                        font-weight: 400;
+                        font-size: 20px;
+                        margin: 10px 0px 10px 10px;
+    
+                    }
+                }
+    
+                &__buttonsGroup {
+                    @include size(100%, 30%);
+                    &__changes{
+                        @include size(100%,60%);
+                        @include flex(flex-start,center);
+                        &__count{
+                            @include size(30%,50%);
+                            @include flex(space-around,center);
+                            &>button{
+                                font-size: 30px;
+
+                            }
+                            .minus{
+                                padding-bottom: 10px;
+                            }
+                            &>div{
+                                font-family: monospace;
+                                @include size(50px,40px);
+                                font-size: 25px;
+                                padding-left: 3px;
+                                border-radius: 10px;
+                                border: 1px solid black;
+                                @include flexCenter();
+                            }
+                        }
+                        &__alles{
+                            @include size(70%,50%);
+                            @include flex(space-around,center);
+                            font-size: 25px;
+                            &>div>span{
+                                font-size: 25px;
+                                color:red;
+                                margin: 0px 5px 0 5px;
+                            }
+                            &>div>s>span{
+                                margin: 0px 5px 0 5px;
+                                font-size: 22px;
+                            }
+                        }
+                    }
+                    &__submit{
+                        @include size(100%,40%);
+                        @include flex(center,center);
+                        &>button{
+                            @include size(80%,80%);
+                            display: block;
+                            border-radius: 10px;
+                            font-size: 20px;
+                            background-color: rgb(255, 212, 41);
+                            border: 2px solid rgb(255, 212, 41);
+                            color: black;
+                            &:hover{
+                                border: 2px solid rgb(255, 212, 41);
+                                background-color: white;
+                                color: rgb(255, 212, 41);
+                                transition-duration: 0.3s;
+                                transition-property: background-color,border,color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .textInfoDopProduct{
+        @include size(80%,50px);
+        margin: 0 auto;
+        font-size: 25px;
+        @include flexCenter();
+        margin-top: -20px;
+        color: black;
+    }
+
+    .mainProductCategory{
+        @include size(100%,none);
+        min-height: 300px;
+        margin: 0 auto;
+        @include flex(space-around,center);
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        .cardProduct{
+            @include size(160px,250px);
+            margin: 20px 10px 10px 10px;
+            box-shadow: 0px 0px 10px 1px rgb(234, 234, 234);
+            border-radius: 10px;
+            @include flex(space-between,center);
+            flex-direction: column;
+            &:hover{
+                cursor: pointer;
+            box-shadow: 0px 0px 10px 1px rgb(162, 162, 162);
+            transition-duration: 0.4s;
+            transition-property:transform,box-shadow;
+    
+            }
+            &__img{
+                @include size(100%,65%);
+                @include backgroundImg(130px);
+                border-radius: 8px;
+            }
+            &__description{
+                margin-top: 5px;
+                color: black;
+                text-align: center;
+                flex-direction: column;
+                @include size(100%,22%);
+                padding: 0;
+                font-size: 13px;
+                &>p,h4{
+                    display: block;
+                    font-size: 13.4px;
+                    font-weight: 600;
+                    margin-top: 10px;
+                }
+            }
+            &__buttons{
+                @include size(100%,30%);
+                &__oneBox{
+                    @include size(100%,45%);
+                    @include flex(space-around,center);
+                    &__price{
+                        font-size: 20px;
+                        color: rgb(255, 0, 0);
+                        @include size(100px,30px);
+                        margin-bottom: 30px;
+                        margin-left: 10px;
+                    }
+                    &__priceDiscount{
+                        font-size: 35px;
+                        color: rgb(239, 7, 7);
+                        @include size(120px,30px);
+                        margin-bottom: 50px;
+                        margin-right: 50px;
+                    }
+                    .discount{
+                        color: black;
+                        font-size: 26px;
+                        margin-left: 50px;
+                    }
+                    &__countsGroup{
+                        @include size(44px,38px);
+                        margin-bottom: 30px;
+                        margin-right: 25px;
+                        @include flex(space-around,center);
+                        &>button{
+                            @include size(40px,90%);
+                            border-radius: 10px;
+                            border: none;
+                            color: rgb(239, 7, 7);
+                            background-color: white;
+                            font-size: 30px;
+                            @include flexCenter();
+                            margin: 0 10px;
+                        }
+                        &>input{
+                            @include size(35px,70%);
+                            text-align: center;
+                            border: none;
+                            font-family: monospace;
+                            border: 1px solid black;
+                            border-radius: 10px;
+                            padding-left: 2px;
+                            font-size: 19px;
+                        }
+                    }
+                }
+                &>button{
+                    @include size(60%,40%);
+                    display: block;
+                    margin: 0px auto 50px auto;
+                    border-radius: 10px;
+                    font-size: 18px;
+                    background-color: rgb(255, 212, 41);
+                    border: 2px solid rgb(255, 212, 41);
+                    color: black;
+                    &:hover{
+                        border: 1px solid rgb(239, 7, 7);
+                        background-color: white;
+                        color: rgb(239, 7, 7);
+                        transition-duration: 0.3s;
+                        transition-property: background-color,border,color;
+                    }
+                }
+                .minus{
+                    padding-bottom: 10px;
+                }
+    
+            }
+        }
+    }
+    
+   
+}

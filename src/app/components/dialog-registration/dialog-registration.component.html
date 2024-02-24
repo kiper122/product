@@ -1,0 +1,41 @@
+<form [formGroup]="registrForm">
+    <div class="form-group">
+        <mat-form-field class="mat-form-field" appearance="outline">
+            <mat-label class="mat-label">Ім'я</mat-label>
+            <input matInput type="text" color="primary" name="kllfg" formControlName="lastName">
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field class="mat-form-field" appearance="outline">
+            <mat-label class="mat-label">Прізвище</mat-label>
+            <input matInput type="text" color="primary" name="kllfg" formControlName="firstName">
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field class="mat-form-field" appearance="outline">
+            <mat-label class="mat-label">Email</mat-label>
+            <input matInput type="email" color="primary" name="email" formControlName="email">
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field class="mat-form-field" appearance="outline">
+            <mat-label class="mat-label">Пароль</mat-label>
+            <input matInput type="password" (input)="checkConfirmedPassword()" color="primary" name="kllfg"
+                formControlName="password">
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field class="mat-form-field" appearance='outline' color="primary">
+            <mat-label class="mat-label">Повторіть пароль</mat-label>
+            <input matInput type="password" name="kl" formControlName="ConfirmationPassword"
+                (input)="checkConfirmedPassword()">
+            <mat-error class="errorPassword" *ngIf="checkVisibilityError('ConfirmationPassword','matchError')">Паролі не
+                збігаються</mat-error>
+        </mat-form-field>
+    </div>
+    <button class="buttonSubmit" mat-raised-button color="warn" type="submit" *ngIf="!registrForm.invalid"
+        (click)="registerUser()">Register</button>
+    <button mat-stroked-button disabled *ngIf="registrForm.invalid" class="buttonSubmit">Register</button>
+
+    <div class="textForm"><span (click)="openDialog()" mat-dialog-close>Увійти</span></div>
+</form>

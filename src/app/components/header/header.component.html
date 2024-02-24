@@ -1,0 +1,75 @@
+<div class="blockElement" [style.width.px]="width" [style.height.px]="height"
+    [style.display]="isBllockElement?'block':'none'"></div>
+<header>
+    <div class="box">
+        <a [routerLink]="['/menu']" class="logo" (click)="closePanel()"></a>
+        <div class="panelNavigation">
+            <div class="oneNavigationHeader">
+                <li class="oneNavigationHeader__element">
+                    <a [routerLink]="[ '/menu' ]" routerLinkActive="activeNavigationElement"
+                        (click)="closePanel()">Меню</a>
+                </li>
+                <li class="oneNavigationHeader__element noneReview">
+                    <a (click)="openReview()">Відгуки</a>
+                </li>
+                <li class="oneNavigationHeader__element">
+                    <a [routerLink]="[ '/discounts' ]" routerLinkActive="activeNavigationElement"
+                        (click)="closePanel()">Aкції</a>
+                </li>
+                <li class="oneNavigationHeader__element" *ngIf="isCabinetOderAdmin">
+                    <a [routerLink]="[ '/'+loginUrl ]" routerLinkActive="activeNavigationElement"
+                        (click)="closePanel()">{{loginPage}}</a>
+                </li>
+            </div>
+        </div>
+        <div class="checkbox">
+            <a target="_blank" class="checkbox__user" (click)="openDialog()" *ngIf="!isCabinetOderAdmin"></a>
+
+            <a [routerLink]="[ '/checkout' ]" routerLinkActive="activeNavigationElement"
+                class="btn-secondary position-relative checkbox__button" (click)="closePanel()">
+                <span
+                    class="checkbox__infoNumber position-absolute top-0 start-100 translate-middle badge rounded-pill ">
+                    {{total}}
+                </span>
+            </a>
+            <div class="checkbox__infoBox">
+                <div class="checkbox__infoBox__info" (click)="panelActive()"
+                    [ngClass]="{'open':!infoPanelActive,'close':infoPanelActive}"></div>
+            </div>
+
+            <div class="infopanel" [style.width.px]="width" [style.height.px]="height"
+                [ngClass]="{'slide-in': infoPanelActive,'slide-out':!infoPanelActive}" (click)="closePanel()">
+                <div class="infopanel__box">
+                    <div class="infopanel__box__infBox">
+
+                        <li class="infopanel__box__infBox__element">
+                            <a [routerLink]="[ '/payment' ]" routerLinkActive="activeNavigationElement"
+                                (click)="closePanel()">Оплата</a>
+                        </li>
+                        <li class="infopanel__box__infBox__element">
+                            <a [routerLink]="[ '/about' ]" routerLinkActive="activeNavigationElement"
+                                (click)="closePanel()">Про нас</a>
+                        </li>
+                        <li class="infopanel__box__infBox__element" class="blockReview">
+                            <a routerLinkActive="activeNavigationElement" (click)="openReview()">Відгуки</a>
+
+                        </li>
+                        <li class="infopanel__box__infBox__element">
+                            <a [routerLink]="[ '/partners' ]" routerLinkActive="activeNavigationElement"
+                                (click)="closePanel()">Для партнерів</a>
+                        </li>
+                        <li class="infopanel__box__infBox__element">
+                            <a [routerLink]="[ '/contacts' ]" routerLinkActive="activeNavigationElement"
+                                (click)="closePanel()">Контакти</a>
+                        </li>
+                        <li class="infopanel__box__infBox__element" *ngFor="let category of categories"
+                            [style.display]="category.dopCategory?'none':'block'">
+                            <a *ngIf="!category.dopCategory" [routerLink]="['/menu/product/',category.path]"
+                                routerLinkActive="activeNavigationElement" (click)="closePanel()">{{category.name}}</a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

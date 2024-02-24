@@ -1,0 +1,116 @@
+@import '../../shared/styles/mixins';
+@import '../../shared/styles/base';
+.info-admin-panel{
+    @include infoAdmin();
+}
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+}
+
+.progress {
+    @include size(250px, 20px);
+    margin: 20px auto;
+}
+h1,span{
+    color: white;
+    text-shadow: 10px 10px 40px  rgb(0, 0, 0);
+}
+.threePoint{
+    color: black;
+}
+.invalid-feedback {
+    font-size: 18px;
+    display: block;
+    @include size(70%, 20px);
+    @include flexCenter();
+    text-align: center;
+}
+main{
+    @extend %dicountAndPaymentAdminInterface;
+}
+.globalAllert{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(133, 130, 130, 0.286);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+    background-color: rgba(47, 47, 48, 0.21);
+        backdrop-filter: blur(10px);
+    @include flexCenter();
+    &__box{
+        @include size(1000px,600px);
+        @include flexCenter();
+         
+        &__imagInfo{
+            @include size(95%,95%);
+            @include flex(space-around,center);
+            flex-direction: column;
+
+            &__img{
+                @include size(80%,80%);
+            @include backgroundImg(800px);
+
+            }
+            &__buttonBlock{
+                @include size(300px,60px);
+                @include flex(space-around,center);
+                background-color: black;
+                color: white;
+                border-radius: 10px;
+                &:hover{
+                @include hoverButton();
+                }
+
+                font-size: 25px;
+            }
+        }
+        
+        &__deleteFotoDiscount{
+            @include size(80%,90%);
+            @include flex(space-around,center);
+            
+            &__containerr{
+                @include size(99%,100%);
+                margin: 0 auto;
+                @include flex(space-between,center);
+                flex-direction: column;
+                &__img,&__imgDeleteDiscount{
+                    @include size(80%,70%);
+                    @include backgroundImg(700px);
+                }
+                &__buttonDelete{
+                    @include size(350px,60px);
+                    @include flex(space-around,center);
+                    &__continue,&__delete{
+                        @include size(140px,80%);
+                        border: none;
+                        background-color: black;
+
+                        border-radius: 10px;
+                        color: white;
+                        font-size: 20px;
+                        &:hover{
+                            @include hoverButton();
+                        }
+                    }
+                    &__delete{
+                        background-color: rgb(203, 7, 7);
+                    }
+                }
+            }
+        }
+    }
+}
+.disabled {
+    @extend %customButtonForm;
+    background-color: rgba(70, 67, 67, 0.184);
+    color: black;
+    &:hover {
+        background-color: rgba(70, 67, 67, 0.184);
+        cursor: auto;
+    }
+}
+*:disabled{
+    background-color: red;
+}

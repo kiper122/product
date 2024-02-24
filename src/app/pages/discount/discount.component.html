@@ -1,0 +1,12 @@
+<div class="h">Акції</div>
+<main>
+    <div class="box" [style.minHeight.px]="h-90-200" >
+        <div class="discount" *ngFor="let discount of userDiscount" [routerLink]="['/discounts',discount.id]">
+            <div class="discount__img" [style.backgroundImage]="'url(' +discount.imagePath +')'"></div>
+            <a  class="discount__buttonInfo"  [routerLink]="[ '/discounts', discount.id]" >Деталі</a>
+        </div>
+        <h1 *ngIf="!userDiscount?.length">Наразі акцій немае</h1>
+    </div>
+
+</main>
+

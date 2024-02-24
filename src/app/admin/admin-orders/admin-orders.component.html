@@ -1,0 +1,61 @@
+<main>
+    <div class="box">
+        <ng-container *ngIf="!isOrderInfo;else orderInfo">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Ім'я</th>
+                        <th scope="col">телефон</th>
+                        <th scope="col">вулиця</th>
+                        <th scope="col">місто</th>
+                        <th scope="col">дім</th>
+                        <th scope="col">деталі</th>
+                        <th scope="col">видалити</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of ordrers">
+                        <td scope="col">{{order.name}}</td>
+                        <td scope="col">{{order.phoneNumbers}}</td>
+                        <td scope="col">{{order.Street}}</td>
+                        <td scope="col">{{order.Citi}}</td>
+                        <td scope="col">{{order.numbersHome}}</td>
+                        <td><button (click)="infoUserOrder(order)">info</button></td>
+                        <td><button (click)="deleteOrder(order)">delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
+        <ng-template #orderInfo>
+            <button (click)="closeOrderInfo()">back</button>
+            <form class="box__boxOne" [formGroup]="orderForm">
+                <div class="box__boxOne__deliveryText">Контактні дані</div>
+                <div class="box__boxOne__oneForm">
+                    <input readonly type="text" formControlName="name">
+                    <input readonly type="text" formControlName="phoneNumbers">
+                    <input readonly type="text" formControlName="Citi">
+                </div>
+                <div class="box__boxOne__twoForm">
+                    <input readonly type="text" class="Vull" formControlName="Street">
+                    <input readonly type="number" class="numberShtr" formControlName="numbersHome">
+                </div>
+                <div class="box__boxOne__threeForm">
+                    <textarea readonly name="n" id=""></textarea>
+                </div>
+                <div class="box__boxOne__viForm">
+                    <input readonly type="number" formControlName="Entrance">
+                    <input readonly type="number" formControlName="Floot">
+                    <input readonly type="number" formControlName="kv">
+                    <input readonly type="number" formControlName="Entryphone">
+                </div>
+                <div class="box__boxOne__threeForm">
+                    <textarea readonly></textarea>
+                </div>
+            </form>
+            <div class="box__boxTwo">
+            </div>
+        </ng-template>
+
+
+    </div>
+</main>

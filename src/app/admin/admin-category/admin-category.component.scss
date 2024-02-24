@@ -1,0 +1,323 @@
+@import '../../shared/styles/mixins';
+.info-admin-panel {
+    @include infoAdmin();
+}
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.progress {
+    @include size(250px, 20px);
+    margin: 20px auto;
+}
+%customButtonForm {
+    @include size(100%, 60px);
+    background-color: black;
+    @include flexCenter();
+    color: white;
+    font-size: 20px;
+    border-radius: 15px;
+    &:hover {
+        @include hoverButton();
+        background-color: rgb(46, 46, 47);
+        color: white;
+    }
+}
+h1,
+span {
+    color: white;
+    text-shadow: 10px 10px 40px rgb(0, 0, 0);
+}
+.invalid-feedback {
+    font-size: 18px;
+     margin: 10px auto;
+    display: block;
+    @include size(70%, 20px);
+    @include flexCenter();
+    text-align: center;
+}
+
+main {
+    @include size(100%, 100%);
+     background-color: rgb(0, 200, 255);
+    padding: 50px 15px 0 15px;
+    @include flex(space-around, flex-start);
+    .box {
+        @include size(100%, 80%);
+         background-color: red;
+        @include flex(space-between, center);
+        &__oneBox {
+            @include size(32%, 110%);
+            &__selected{
+                @include size(100%,40px);
+                 background-color: red;
+                @include flexCenter();
+                &>select{
+                    width: 50%;
+                    height: 30px;
+                    margin-left: 10px;
+                }
+            }
+            &__boxCheckBox{
+                @include size(100%,40px);
+                @include flex(space-around,center);
+                &>*{
+                    display: block;
+                }
+                &>input{
+                    width: 25px;
+                    height: 25px;
+                }
+                margin-bottom: 5px;
+            }
+            &__custom-file-upload {
+                @extend %customButtonForm;
+                 &:disabled{
+                     background-color: rgba(70, 67, 67, 0.184);
+                     color: black;
+                     &:hover{
+                         cursor: auto;
+                     }
+                 }
+
+            }
+            &__imageInput {
+                display: none;
+            }
+            &__imageBox {
+                @include size(250px, 150px);
+                margin: 30px auto;
+                border: 1px solid black;
+                margin-bottom: 0px;
+                @include flexCenter();
+                font-size: 25px;
+                border-radius: 6px;
+                @include backgroundImg(210px);
+            }
+            &__fotoButtons {
+                @include flex(space-around, center);
+                @include size(250px, 40px);
+                margin: 10px auto 10px auto;
+                border-radius: 10px;
+                &__button {
+                    @include size(100px, 90%);
+                    border-radius: 10px;
+                    font-size: 18px;
+                    border: 2px solid white;
+
+                    &:hover {
+                        @include hoverButton();
+                    }
+                }
+                &__buttonInfo {
+                    background-color: black;
+                    color: white;
+
+                    &:hover {
+                        background-color: rgb(46, 46, 47);
+                        color: white;
+                    }
+                }
+                &__buttonDelete {
+                    background-color: rgb(255, 0, 0);
+                    color: white;
+
+                    &:hover {
+                        background-color: rgb(185, 17, 5);
+                        color: white;
+                    }
+                }
+            }
+            &__inputText {
+                @include size(250px, 40px);
+                margin: 15px auto;
+                display: block;
+                font-size: 18px;
+                padding: 10px;
+                border-radius: 10px;
+                border: 1px solid rgb(195, 193, 193);
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            .marginBottom {
+                margin-bottom: 20px;
+            }
+            &__FinalButton {
+                @extend %customButtonForm;
+
+                &:disabled {
+                    background-color: rgba(70, 67, 67, 0.184);
+                    color: black;
+
+                    &:hover {
+                        cursor: auto;
+                    }
+                }
+            }
+            &__label {
+                 color:red;
+                display: block;
+                position: relative;
+                top: 30px;
+                 margin: 5px 0 0 70px;
+                font-size: 20px;
+                margin: 0 auto;
+            }
+        }
+        &__twoBox {
+             border: 1px solid black;
+            @include size(65%, 100%);
+            overflow: auto;
+            .table {
+                font-size: 17px;
+                 margin-top: 50px;
+                .actionButtons {
+                    @include size(70px, 40px);
+                    margin-left: 20px;
+                    border-radius: 10px;
+                    border: 1px none black;
+
+                    &:hover {
+                        @include hoverButton();
+                    }
+                }
+                .editDiscount {
+                    background-color: rgb(46, 246, 46);
+
+                    &:hover {
+                        background-color: rgb(135, 249, 135);
+                    }
+                    &:disabled{
+                        color: white;
+                        background-color: rgb(186, 247, 186);
+                        &:hover{
+                            cursor: auto;
+                        }
+                    }
+                }
+                .deleteDiscount {
+                    background-color: rgb(250, 70, 70);
+                    margin-top: 10px;
+
+                    &:hover {
+                        background-color: rgb(255, 128, 128);
+                    }
+
+                    &:disabled {
+                        background-color: rgb(243, 219, 219);
+                        color: rgb(255, 255, 255);
+
+                        &:hover {
+                            cursor: auto;
+                            color: rgb(255, 255, 255);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.globalAllert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(133, 130, 130, 0.286);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+    background-color: rgba(47, 47, 48, 0.21);
+     border-radius: 10px;
+    backdrop-filter: blur(10px);
+    @include flexCenter();
+    &__box {
+        @include size(1000px, 600px);
+         border: 1px solid black;
+        @include flexCenter();
+        &__imagInfo {
+             border: 1px solid black;
+            @include size(95%, 95%);
+             background-color: blue;
+            @include flex(space-around, center);
+            flex-direction: column;
+            &__img {
+                @include size(80%, 80%);
+                 background-color: red;
+                @include backgroundImg(800px);
+
+            }
+            &__buttonBlock {
+                @include size(300px, 60px);
+                @include flex(space-around, center);
+                background-color: black;
+                color: white;
+                border-radius: 10px;
+
+                &:hover {
+                    @include hoverButton();
+                }
+
+                font-size: 25px;
+            }
+             background-color: red;
+        }
+        &__deleteFotoDiscount {
+             background-color: red;
+            @include size(80%, 90%);
+             display: flex;
+            @include flex(space-around, center);
+            &__containerr {
+                @include size(99%, 100%);
+                 background-color: black;
+                margin: 0 auto;
+                @include flex(space-between, center);
+                flex-direction: column;
+                &__img,
+                &__imgDeleteDiscount {
+                    @include size(80%, 70%);
+                    @include backgroundImg(700px);
+                     background-color: blue;
+                }
+                &__buttonDelete {
+                    @include size(350px, 60px);
+                     background-color: rgb(217, 3, 3);
+                     color: white;
+                    @include flex(space-around, center);
+
+                    &__continue,
+                    &__delete {
+                        @include size(140px, 80%);
+                        border: none;
+                        background-color: black;
+
+                        border-radius: 10px;
+                        color: white;
+                        font-size: 20px;
+
+                        &:hover {
+                            @include hoverButton();
+                        }
+                    }
+
+                    &__delete {
+                        background-color: rgb(203, 7, 7);
+                    }
+                }
+            }
+             flex-direction: column;
+        }
+    }
+}
+.disabled {
+    @extend %customButtonForm;
+    background-color: rgba(70, 67, 67, 0.184);
+    color: black;
+    &:hover {
+        background-color: rgba(70, 67, 67, 0.184);
+        cursor: auto;
+    }
+}
+
+*:disabled {
+    background-color: red;
+}
+

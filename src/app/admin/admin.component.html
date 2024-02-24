@@ -1,0 +1,32 @@
+<main [style.minHeight.px]="h">
+    <div class="box" [style.height.%]="100">
+        <div class="panel">
+            <li class="panel__element">
+                <a class="panel__element__noActive" [routerLink]="[ 'discount' ]"
+                    routerLinkActive="panel__element__active">Discount</a>
+            </li>
+            <li class="panel__element">
+                <a class="panel__element__noActive" [routerLink]="[ 'category' ]"
+                    routerLinkActive="panel__element__active">Category</a>
+            </li>
+            <li class="panel__element">
+                <a class="panel__element__noActive" [routerLink]="[ 'product' ]"
+                    routerLinkActive="panel__element__active">Product</a>
+            </li>
+            <li class="panel__element">
+                <a class="panel__element__noActive" [routerLink]="[ 'orders' ]"
+                    routerLinkActive="panel__element__active">Orders</a>
+            </li>
+            <li class="panel__element">
+                <a class="panel__element__noActive" [routerLink]="[ 'payment' ]"
+                    routerLinkActive="panel__element__active">Payment</a>
+            </li>
+            <li class="panel__element">
+                <button class="panel__element__noActive" (click)="openDialogExit()">log Out</button>
+            </li>
+        </div>
+    </div>
+    <div class="routerAutlet" [style.width.px]="w-250">
+        <router-outlet></router-outlet>
+    </div>
+</main>

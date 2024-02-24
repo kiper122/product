@@ -1,0 +1,12 @@
+<div class="globPanel" [style.height.px]="h">
+    <div class="container globPanel__container">
+        <div class="front globPanel__container__front">
+            <div class="header globPanel__container__front__header">Welcome</div>
+            <form name="f1" [formGroup]="authForm" (ngSubmit)="loginUser()">
+                <input  formControlName="email" name="email" type="text" class="email  globPanel__container__front__email" placeholder="Username">
+                <input  formControlName="password" name="password" type="password" class="password globPanel__container__front__password" placeholder="Password">
+                <button class="sign globPanel__container__front__sign" type="submit" [disabled]="authForm.invalid">Sign in</button>
+            </form>
+        </div>
+    </div>
+</div>

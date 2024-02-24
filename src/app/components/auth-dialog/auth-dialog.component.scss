@@ -1,0 +1,91 @@
+@import '../../shared/styles/mixins';
+.form-group{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    padding-top: 10px;
+    margin-top: 30px;
+    .mat-form-field {
+        width: 90%;
+        font-size: 25px;
+        .mat-label{
+            font-size: 20px;
+        }
+        &>input{
+        border: 1px solid rgb(4, 49, 249);
+        }
+    }
+}
+.buttonSubmit{
+    width: 200px;
+    height: 40px;
+    display: block;
+    margin: 20px auto 0 auto;
+    font-size: 22px;
+    color: rgb(255, 254, 254);
+    &:disabled{
+        color: black;
+    }
+
+}
+.textForm{
+    @include size(100%,50px);
+    @include flexCenter();
+    font-size: 20px;
+    color: rgba(255, 150, 150, 0.799);
+    &>span{
+        &:hover{
+            cursor: pointer;
+            color: red;
+        }
+    }
+   
+}
+@media screen and (max-width:500px){
+    .form-group{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        padding-top: 10px;
+        margin-top: 30px;
+        .mat-form-field {
+            width: 90%;
+            font-size: 22px;
+            .mat-label{
+                font-size: 20px;
+            }
+            &>input{
+            border: 1px solid rgb(4, 49, 249);
+            }
+        }
+    }
+    .buttonSubmit{
+        width: 200px;
+        height: 40px;
+        display: block;
+        margin: 10px auto 0 auto;
+        font-size: 22px;
+        color: rgb(255, 254, 254);
+        &:disabled{
+            color: black;
+        }
+    
+    }
+    .textForm{
+        @include size(100%,50px);
+        @include flexCenter();
+        font-size: 17px;
+        color: rgba(255, 150, 150, 0.799);
+        &>span{
+            &:hover{
+                cursor: pointer;
+                color: red;
+            }
+        }
+       
+    }
+}

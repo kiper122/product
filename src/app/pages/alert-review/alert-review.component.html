@@ -1,0 +1,29 @@
+<div class="box">
+    <div class="box__textReview">Загальне враження</div>
+    <div class="box__contaierStarts">
+        <div (click)="oneStarClick()" [className]="isOneStar?'five-pointed-starActive':'five-pointed-star'"></div>
+        <div (click)="twoStarClick()" [className]="isTwoStar?'five-pointed-starActive':'five-pointed-star'"></div>
+        <div (click)="threeStarClick()" [className]="isThreeStar?'five-pointed-starActive':'five-pointed-star'"></div>
+        <div (click)="vierStarClick()" [className]="isVierStar?'five-pointed-starActive':'five-pointed-star'"></div>
+    </div>
+    <div class="box__starName">
+        <p>Жахливо</p>
+        <p>Погано</p>
+        <p>Добре</p>
+        <p>Відмінно</p>
+    </div>
+    <form class="example-form" [formGroup]="reviewForm" (ngSubmit)="resetReview()">
+        <div class="box__input">
+            <mat-form-field class="mat-form-field" appearance="outline">
+                <mat-label class="mat-label">Коментар</mat-label>
+                <input matInput type="email" formControlName="email" color="primary" formControlName="comment">
+            </mat-form-field>
+        </div>
+        <div class="box__submit">
+            <button type="submit" [disabled]="reviewForm.invalid" mat-dialog-close>Відправити</button>
+        </div>
+    </form>
+    <div mat-dialog-actions class="clouse">
+        <button mat-button mat-dialog-close color="primary">Close</button>
+    </div>
+</div>
